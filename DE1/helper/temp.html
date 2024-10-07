@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="sliders.css">
+  </head>
+  <body>
+    <div class="universal-slider" style="z-index: 1000">
+      <img class="slider-circuit" src="./img/slider_circuit.png" alt="">
+      <div class="slider">
+        <img type="range" class="slider_V">
+        <div class="v slider-box">
+          <img src="./img/slider_V_arrow.png" class="slider-V-arrow slider-v-r1">
+          <div class="value-box">
+            <input type="text" value="0" readonly>
+            <span>V</span>
+          </div>
+        </div>    
+        <div class="d slider-box">
+          <input type="range" class="slider_D range-slider" step="1" min="0" max="180" value="1">
+          <img src="./img/slider_D_blank.png" class="slider-D-arrow">
+          <img src="./img/slider_D_body.png" alt="" class="slider-D-body">
+          <div class="value-box">
+            <!-- <span>0</span> -->
+            <input type="text" value="1" min="1" max="180" >
+          </div>
+        </div>
+        <div class="r slider-box">
+          <input type="range" class="slider_R" step="1" min="50" max="500" value="50">
+          <img src="./img/slider_R_arrow.png" class="slider-R-arrow">
+          <img src="./img/slider_R_back.png" alt="" class="slider-R-back">
+          <div class="value-box">
+            <input type="text" value="50"  min="50" max="500" onfocusout="">
+            <span>𝜴</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="sliders.js"></script>
+  </body>
+</html>

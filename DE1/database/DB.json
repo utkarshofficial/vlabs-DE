@@ -1,0 +1,16 @@
+{
+    "indexFilePath": "./index.html",
+    "srcJSFilePath": "./js/Src.js",
+    "imagesPath": "./src/images/step/",
+    "images": [
+        "problem_1_battery.png",
+        "problem_1_battery_puffed.png",
+        "problem_1_drone_front_image.png",
+        "problem_1_drone_front_zoom_image.png",
+        "problem_1_drone_front_zoom_image_2.png",
+        "step_1_arrow_image_1.png",
+        "step_1_arrow_image_2.png"
+    ],
+    "videosPath": "./src/videos/step/",
+    "videos": []
+}

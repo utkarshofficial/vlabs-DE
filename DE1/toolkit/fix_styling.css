@@ -1,0 +1,15 @@
+body{
+    justify-content: unset;
+}
+
+.right-box{
+    margin-left: 0;
+}
+
+.main-container{
+    margin: auto;
+}
+
+.right-container{
+    width: unset;
+}
