@@ -258,32 +258,54 @@ const Scenes = {
   hideStepHeading() {
     document.querySelector(".step-heading").style.visibility = "hidden";
   },
-  experimentHeading(text, style={}){
-    let expHeader = new Dom(".anime-header > p")
+  experimentHeading(text, style = {}) {
+    let expHeader = new Dom(".anime-header > p");
     expHeader.styles({
       textTransform: "upprcase",
       position: "relative",
       textAlign: "center",
       fontSize: "30px",
-      ...style
-    })
-    expHeader.setContent(text)
+      ...style,
+    });
+    expHeader.setContent(text);
   },
   // todo udpate this video box in template
-  videoBox(srcVideo, vHeight, videoTitle, vBoxLeft, vBoxTop){
-    let videoBox = new Dom(".video-box").set(vBoxLeft,vBoxTop)
-    let video = new Dom(".video-box video")
-    let videoTitleText = new Dom(".video-box .title").setContent(videoTitle)
-    let btnRestart = new Dom(".video-box .controls button")
+  videoBox(vBoxLeft, vBoxTop, srcVideo, vHeight, videoTitle) {
+    let videoBox = new Dom(".video-box").set(vBoxLeft, vBoxTop);
+    let video = new Dom(".video-box video");
+    let videoTitleText = new Dom(".video-box .title").setContent(videoTitle);
+    let btnRestart = new Dom(".video-box .controls button");
 
     // src video is a Dom element
-    video.set(null,null,vHeight)
-    video.item.src = srcVideo.item.src
+    video.set(null, null, vHeight);
+    video.item.src = srcVideo.item.src;
 
     btnRestart.item.onclick = () => {
-      video.item.currentTime = 0
-      video.item.play()
-    }
+      video.item.currentTime = 0;
+      video.item.play();
+    };
+
+    return videoBox
+  },
+  // todo update this also
+  stepModal(content, 
+    mBoxLeft = null, 
+    mBoxTop = null,
+    mBoxHeight = null,
+    mBoxWidth = null,
+  ) {
+    let modalBox = new Dom(".modal-box");
+    let modalContent = new Dom(".modal-box .content");
+    let modalClose = new Dom(".modal-box .footer .btn1");
+
+    modalContent.setContent(content);
+    modalClose.item.onclick = () => {
+      modalBox.hide();
+    };
+
+    modalBox.set(mBoxLeft, mBoxTop, mBoxHeight, mBoxWidth).show("flex");
+
+    return modalBox
   },
   // for typing hello text
   student_name: "",
@@ -311,68 +333,96 @@ const Scenes = {
   steps: [
     // * Step1
     () => {
-      Scenes.StepProcess.start()
-      Scenes.experimentHeading("problem - 1 Drone is not powering up.")
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("problem - 1 Drone is not powering up.");
       // Scenes.setStepHeading("Baṣttery Issues", "");
 
       // Scenes.items.table_mat.set(11,-14, null,925).styles({borderRadius: "40px", border: "solid 10px white"})
-      Src.problem_1_drone_front_image.set(-13,-1,400).zIndex(1)
-      Src.problem_1_drone_front_zoom_image.set(388,93, null, 264).zIndex(1).hide()
-      Src.step_1_arrow_image_1.set(243,69, 116).zIndex(1).rotate(180).hide()
+      Src.problem_1_drone_front_image.set(-13, -1, 400).zIndex(1);
+      Src.problem_1_drone_front_zoom_image
+        .set(388, 93, null, 264)
+        .zIndex(1)
+        .hide();
+      Src.step_1_arrow_image_1.set(243, 69, 116).zIndex(1).rotate(180).hide();
 
       Scenes.videoBox(
-        Src.yoke_front_to_side, 150,
+        725,
+        259,
+        Src.yoke_front_to_side,
+        150,
         "Yoke Front to Side",
-        654, 249
+      );
+
+      let text1 = new Elements.Text().dom;
+      let text2 = new Elements.Text().dom;
+      let text3 = new Elements.Text().dom;
+
+      Scenes.stepModal(
+        "Check whether the connection between these two (deans plug and battery) is fine or not, there is no looseness anywhere.",
+        458, -18, 110, 478
       )
-      
-      let text1 = new Elements.Text().dom
-      let text2 = new Elements.Text().dom
-      let text3 = new Elements.Text().dom
 
       let textStyle = {
         fontSize: "16px",
         color: "#000000",
         fontFamily: "Arial",
         backgroundColor: "white",
-        padding:  "10px",
+        padding: "10px",
+      };
 
-      }
-      
-      text1.set(516,-17).setContent("1. Check whether the connection between these two (deans plug and battery) is fine or not, there is no looseness anywhere.").styles(textStyle).hide()
-      text2.set(516, 24).setContent("2. The video next to it explains how they are connected to each other.").styles({
-        ...textStyle,
-        width: "379px"
-      }).hide()
-      text3.set(516, 44).setContent("3. If it is connected properly then check whether the Dean plug is properly connected to the plate or not, whether the iron soldering is done properly or not.").styles({
-        ...textStyle,
-        width: "379px"
-      }).hide()
-      
-      anime.timeline({
-        easing: "linear",
-        duration: 2000,
-      })
-      .add({
-        targets: Src.problem_1_drone_front_image.item,
-        rotate: 90,
-      })
-      .add({
-        begin(){
-          Src.step_1_arrow_image_1.show().opacity(0)
-        },
-        targets: Src.step_1_arrow_image_1.item,
-        opacity: [0,1],
-        easing: "linear",
-      })
-      .add({
-        begin(){
-          Src.problem_1_drone_front_zoom_image.show().opacity(0)
-        },
-        targets: Src.problem_1_drone_front_zoom_image.item,
-        opacity: [0,1],
-        easing: "linear",
-      })
+      text1
+        .set(516, -17)
+        .setContent(
+          "1. Check whether the connection between these two (deans plug and battery) is fine or not, there is no looseness anywhere."
+        )
+        .styles(textStyle)
+        .hide();
+      text2
+        .set(516, 24)
+        .setContent(
+          "2. The video next to it explains how they are connected to each other."
+        )
+        .styles({
+          ...textStyle,
+          width: "379px",
+        })
+        .hide();
+      text3
+        .set(516, 44)
+        .setContent(
+          "3. If it is connected properly then check whether the Dean plug is properly connected to the plate or not, whether the iron soldering is done properly or not."
+        )
+        .styles({
+          ...textStyle,
+          width: "379px",
+        })
+        .hide();
+
+      anime
+        .timeline({
+          easing: "linear",
+          duration: 2000,
+        })
+        .add({
+          targets: Src.problem_1_drone_front_image.item,
+          rotate: 90,
+        })
+        .add({
+          begin() {
+            Src.step_1_arrow_image_1.show().opacity(0);
+          },
+          targets: Src.step_1_arrow_image_1.item,
+          opacity: [0, 1],
+          easing: "linear",
+        })
+        .add({
+          begin() {
+            Src.problem_1_drone_front_zoom_image.show().opacity(0);
+          },
+          targets: Src.problem_1_drone_front_zoom_image.item,
+          opacity: [0, 1],
+          easing: "linear",
+        });
       // .add({
       //   begin(){
       //     videoBox.show().opacity(0)
@@ -385,40 +435,49 @@ const Scenes = {
       setTimeout(() => {
         // Scenes.StepProcess.done()
       }, 1000);
-      return true
+      return true;
     },
     // * Step2
     () => {
-      Scenes.StepProcess.start()
-      Scenes.setStepHeading("Battery Issues", "2) Battery damage (e.g., puffiness).");
+      Scenes.StepProcess.start();
+      // Scenes.setStepHeading("Battery Issues", "2) Battery damage (e.g., puffiness).");
 
-      Src.table_mat.set(11,-14, null,925).styles({borderRadius: "40px", border: "solid 10px white"})
-      Src.problem_1_drone_front_image.set(21,12).zIndex(1)
-      Src.problem_1_drone_front_zoom_image_2.set(417,0, null, 264).zIndex(2)
-      Src.step_1_arrow_image_1.set(232,111, 97).zIndex(1).rotate(-25)
-      Src.problem_1_battery_puffed.set(677, 26, null, 250).zIndex(1)
-    
+      // Src.table_mat.set(11,-14, null,925).styles({borderRadius: "40px", border: "solid 10px white"})
+      Src.problem_1_drone_front_image.set(21, 12).zIndex(1);
+      Src.problem_1_drone_front_zoom_image_2.set(417, 0, null, 264).zIndex(2);
+      Src.step_1_arrow_image_1.set(232, 111, 97).zIndex(1).rotate(-25);
+      Src.problem_1_battery_puffed.set(677, 26, null, 250).zIndex(1);
 
       let textStyle = {
         fontSize: "15px",
         color: "#000000",
         fontFamily: "Arial",
         backgroundColor: "white",
-        padding:  "10px",
+        padding: "10px",
+      };
 
-      }
+      let k = Util.Src.tempTitle1
+        .set(675, 151)
+        .setContent("Example images of puffed battery")
+        .styles(textStyle);
+      Src.tempTitle2
+        .set(500, 308)
+        .setContent(
+          "b) Check if the wires are burnt or not, if burnt then change the wires with new ones."
+        )
+        .styles({
+          ...textStyle,
+          width: "379px",
+        });
 
-      let k = Util.
+      Scenes.StepProcess.done();
+      return true;
+    },
+    // * Step3
+    () => {
+      Scenes.StepProcess.start();
 
-      Src.tempTitle1.set(675,151).setContent("Example images of puffed battery").styles(textStyle)
-      Src.tempTitle2.set(500,308).setContent("b) Check if the wires are burnt or not, if burnt then change the wires with new ones.").styles({
-        ...textStyle,
-        width: "379px"
-      })
-      
-      Scenes.StepProcess.done()
-      return true
-    }
+    },
   ],
   // ! Scenes Process
   StepProcess: {

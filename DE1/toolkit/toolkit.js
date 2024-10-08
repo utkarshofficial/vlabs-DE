@@ -27,7 +27,8 @@ const Download = {
     this.setBtnMuteOnClick();
     this.detectMobileUser();
     this.detectZoomLevel()
-    this.setHeightOfMainContainerAuto();
+    // TODO UNCOMMENT
+    // this.setHeightOfMainContainerAuto();
   },
   setOnClicks() {
     this.btnDownload = document.querySelector(".btn-download-pdf");
