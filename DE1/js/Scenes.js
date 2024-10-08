@@ -258,6 +258,17 @@ const Scenes = {
   hideStepHeading() {
     document.querySelector(".step-heading").style.visibility = "hidden";
   },
+  experimentHeading(text, style={}){
+    let expHeader = new Dom(".anime-header > p")
+    expHeader.styles({
+      textTransform: "upprcase",
+      position: "relative",
+      textAlign: "center",
+      fontSize: "30px",
+      ...style
+    })
+    expHeader.setContent(text)
+  },
   // for typing hello text
   student_name: "",
   optionsDone: [0, 0, 0, 0],
@@ -285,6 +296,7 @@ const Scenes = {
     // * Step1
     () => {
       Scenes.StepProcess.start()
+      Scenes.experimentHeading("problem - 1 Drone is not powering up.")
       // Scenes.setStepHeading("Baṣttery Issues", "");
 
       // Scenes.items.table_mat.set(11,-14, null,925).styles({borderRadius: "40px", border: "solid 10px white"})
@@ -464,7 +476,7 @@ const Scenes = {
 };
 
 // stepcalling
-// Scenes.currentStep = 0;
+Scenes.currentStep = 1;
 // Scenes.next();
 
 export default Scenes;

@@ -499,6 +499,7 @@
 
   /* Pop window */
   .btn-popup-box{
+    visibility: hidden;
     display: flex;
     position: absolute;
     justify-content: center;

@@ -22,6 +22,7 @@
 
 /* Progressbar */
 .progress-bar {
+    visibility: hidden;
     /* width: clamp(320px, 30%, 430px); */
     grid-area: progressBar;
     font-family: Roboto;
