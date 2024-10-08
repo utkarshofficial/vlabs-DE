@@ -335,6 +335,35 @@ const Scenes = {
     () => {
       Scenes.StepProcess.start();
       Scenes.experimentHeading("problem - 1 Drone is not powering up.");
+  
+      Src.problem_1_drone_front_image.set(304, 60, 270).zIndex(1);
+
+      anime.timeline({
+        easing: "linear",
+        duration: 1000
+      })
+      .add({
+        targets: Src.problem_1_drone_front_image,
+        translatex: "20"
+      })
+  
+      Scenes.stepModal(
+        "Following Two issues can occur if the door is not powering up. <br> 1. Battery issues. <br> 2. PMU issues",
+        458, -18, 110, 478
+      ).hide()
+
+
+
+
+
+      setTimeout(() => {
+        // Scenes.StepProcess.done()
+      }, 1000);
+      return true;
+    },
+    () => {
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("problem - 1 Drone is not powering up.");
       // Scenes.setStepHeading("Baṣttery Issues", "");
 
       // Scenes.items.table_mat.set(11,-14, null,925).styles({borderRadius: "40px", border: "solid 10px white"})
