@@ -12,5 +12,9 @@
         "step_1_arrow_image_2.png"
     ],
     "videosPath": "./src/videos/step/",
-    "videos": []
+    "videos": [
+        "send_dropping.mp4",
+        "yoke_front_to_back.mp4",
+        "yoke_front_to_side.mp4"
+    ]
 }

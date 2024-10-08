@@ -29,6 +29,7 @@ class DB:
             self.videos = dbData[DB.Keys.videos]
             self.videosPath = dbData[DB.Keys.videosPath]
             self.videosSrcFull = self.getVideosWithfullSrc()
+            self.videoNamesOnly = self.getOnlyVideoName()
             self.indexFilePath = dbData[DB.Keys.indexFilePath]
             self.srcJSFilePath = dbData[DB.Keys.srcJSFilePath]
             self.data = dbData
@@ -41,6 +42,15 @@ class DB:
                 imageNamesOnly.append(image)
             
             return imageNamesOnly
+        
+        def getOnlyVideoName(self) -> list[str]:
+            videoNamesOnly = []
+
+            for video in self.videos:
+                video = video[:video.rfind('.')]
+                videoNamesOnly.append(video)
+            
+            return videoNamesOnly
 
         def getImagesWithfullSrc(self) -> list[str]:
             imagesName = self.images
@@ -144,6 +154,7 @@ class Generate:
 
     def __init__(self) -> None:
         self.addHTMLImgTagsToIndex()
+        self.addHTMLVideoTagsToIndex()
         self.addSrcToSrcJS()
 
     def addHTMLImgTagsToIndex(self):
@@ -167,15 +178,44 @@ class Generate:
         # save new content to file
         files.updateIndexFile(newIndexContent)
 
+    def addHTMLVideoTagsToIndex(self):
+        classToFind = "step-videos"
+        start, end = self.findStepMediaStartEnd(files.indexHTMLData, classToFind)
+
+        newVideoTags = [
+            f"{self.INDEX_TAB_SPACE}<!-- * Step Videos will be added here -->\n"
+        ]
+        # generate image
+        for i in range(len(db.data.videosSrcFull)):
+            videoSrc = db.data.videosSrcFull[i]
+            videoName = db.data.videoNamesOnly[i]
+            videoTag = f'{self.INDEX_TAB_SPACE}<video id="{videoName}" src="{videoSrc}" class="main-window-imgs"></video>\n'
+            newVideoTags.append(videoTag)
+
+        # add it to index
+        oldIndexContent = files.indexHTMLData
+        newIndexContent = oldIndexContent[:start+1] + newVideoTags + oldIndexContent[end:]
+
+        # save new content to file
+        files.updateIndexFile(newIndexContent)
+
     def addSrcToSrcJS(self):
         classToFind = "Src = {"
         start, end = self.findStepMediaStartEnd(files.srcJSData, classToFind, endTag='}')
         newSrcJS = [
-            f"{self.SRC_TAB_SAPCE}// * New src content added here\n"
+            f"{self.SRC_TAB_SAPCE}// New src content added here\n\n"
         ]
-        # generate image
+
+        # * generate images
+        newSrcJS.append(f"{self.SRC_TAB_SAPCE}// * New Images added here\n")
         for imageName in db.data.imageNamesOnly:
             newDomElement = f'{self.SRC_TAB_SAPCE}{imageName}: new Dom("#{imageName}"),\n'
+            newSrcJS.append(newDomElement)
+
+        # * generate videos
+        newSrcJS.append(f"\n{self.SRC_TAB_SAPCE}// * New Videos added here\n")
+        for video in db.data.videoNamesOnly:
+            newDomElement = f'{self.SRC_TAB_SAPCE}{video}: new Dom("#{video}"),\n'
             newSrcJS.append(newDomElement)
 
         # add it to srcJS

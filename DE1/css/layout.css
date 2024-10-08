@@ -277,6 +277,13 @@ body {
     height: fit-content;
     border-radius: 3px;
     overflow: hidden;
+    border-radius: 10px;
+}
+
+.video-box video{
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 /* .video-box .video{

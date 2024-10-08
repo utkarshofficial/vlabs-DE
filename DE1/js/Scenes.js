@@ -269,6 +269,22 @@ const Scenes = {
     })
     expHeader.setContent(text)
   },
+  // todo udpate this video box in template
+  videoBox(srcVideo, vHeight, videoTitle, vBoxLeft, vBoxTop){
+    let videoBox = new Dom(".video-box").set(vBoxLeft,vBoxTop)
+    let video = new Dom(".video-box video")
+    let videoTitleText = new Dom(".video-box .title").setContent(videoTitle)
+    let btnRestart = new Dom(".video-box .controls button")
+
+    // src video is a Dom element
+    video.set(null,null,vHeight)
+    video.item.src = srcVideo.item.src
+
+    btnRestart.item.onclick = () => {
+      video.item.currentTime = 0
+      video.item.play()
+    }
+  },
   // for typing hello text
   student_name: "",
   optionsDone: [0, 0, 0, 0],
@@ -303,8 +319,13 @@ const Scenes = {
       Src.problem_1_drone_front_image.set(-13,-1,400).zIndex(1)
       Src.problem_1_drone_front_zoom_image.set(388,93, null, 264).zIndex(1).hide()
       Src.step_1_arrow_image_1.set(243,69, 116).zIndex(1).rotate(180).hide()
-      let videoBox = new Dom(".video-box")
-      videoBox.set(654,249,null, 276).hide()
+
+      Scenes.videoBox(
+        Src.yoke_front_to_side, 150,
+        "Yoke Front to Side",
+        654, 249
+      )
+      
       let text1 = new Elements.Text().dom
       let text2 = new Elements.Text().dom
       let text3 = new Elements.Text().dom
@@ -352,14 +373,14 @@ const Scenes = {
         opacity: [0,1],
         easing: "linear",
       })
-      .add({
-        begin(){
-          videoBox.show().opacity(0)
-        },
-        targets: videoBox.item,
-        opacity: [0,1],
-        easing: "linear",
-      })
+      // .add({
+      //   begin(){
+      //     videoBox.show().opacity(0)
+      //   },
+      //   targets: videoBox.item,
+      //   opacity: [0,1],
+      //   easing: "linear",
+      // })
 
       setTimeout(() => {
         // Scenes.StepProcess.done()
