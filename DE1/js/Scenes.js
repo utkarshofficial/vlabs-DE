@@ -421,12 +421,14 @@ const Scenes = {
 
       function ops1() {
         Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.realCurrentStep = 1
+        Scenes.currentStep = 1
         Scenes.next()
       }
 
       function ops2() {
-        console.log("pmu issue click");
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 2
+        Scenes.next()
       }
 
       return true;
@@ -461,6 +463,8 @@ const Scenes = {
         "Example of puffed or swollen battery.",
 
         "If everything is fine then there is no battery issue.",
+
+        "This video explains how iron soldering is done."
       ];
 
       let videoBox = Scenes.videoBox(
@@ -615,7 +619,7 @@ const Scenes = {
 
         // modal box
         function modalBoxOnComplete() {
-          Scenes.stepModal(texts[1], nextAnime, 658, 134, 110, 284);
+          Scenes.stepModal(texts[texts.length - 1], nextAnime, 703, 147, 96, 239);
         }
 
         // next anime on close
@@ -721,6 +725,7 @@ const Scenes = {
 
         // next anime on close
         function nextAnime() {
+          Scenes.currentStep = 0
           Scenes.StepProcess.done()
         }
       }
@@ -730,44 +735,196 @@ const Scenes = {
     // * Step 3
     () => {
       Scenes.StepProcess.start();
-      // Scenes.setStepHeading("Battery Issues", "2) Battery damage (e.g., puffiness).");
+      Scenes.experimentHeading("PMU (Power management unit) issues");
 
-      // Src.table_mat.set(11,-14, null,925).styles({borderRadius: "40px", border: "solid 10px white"})
-      Src.problem_1_drone_front_image.set(21, 12).zIndex(1);
-      Src.problem_1_drone_front_zoom_image_2.set(417, 0, null, 264).zIndex(2);
-      Src.step_1_arrow_image_1.set(232, 111, 97).zIndex(1).rotate(-25);
-      Src.problem_1_battery_puffed.set(677, 26, null, 250).zIndex(1);
+      Src.problem_1_drone_front_image.set(-13, -1, 400).zIndex(1);
+      Src.problem_1_pmu_zoom_img
+        .set(361,49, null, 264)
+        .zIndex(1).hide()
+      Src.step_1_arrow_image_1.set(283, 58, 89).zIndex(1).rotate(180).hide();
+      Src.pmu_img.set(628, 241, 133).hide()
+        
 
-      let textStyle = {
-        fontSize: "15px",
-        color: "#000000",
-        fontFamily: "Arial",
-        backgroundColor: "white",
-        padding: "10px",
-      };
+      let texts = [
+        "Check neither PMU’s wire that is connected to flight controller or battery are loosely connected nor burnt.",
 
-      let k = Util.Src.tempTitle1
-        .set(675, 151)
-        .setContent("Example images of puffed battery")
-        .styles(textStyle);
-      Src.tempTitle2
-        .set(500, 308)
-        .setContent(
-          "b) Check if the wires are burnt or not, if burnt then change the wires with new ones."
-        )
-        .styles({
-          ...textStyle,
-          width: "379px",
-        });
+        "The video next to it explains how they are connected.",
 
-      Scenes.StepProcess.done();
+        "Check whether PMU is physically damaged or not.",
+
+        "If PMU is damaged, replace it with a new one.",
+
+        "If everything is fine then there is no PMU issue.",
+      ];
+
+      let videoBox = Scenes.videoBox(
+        725,
+        259,
+        Src.yoke_front_to_side,
+        150,
+        "Yoke Front to Side"
+      ).hide();
+
+      // * Animation functions
+      (function anime1_drone() {
+        // main anime
+        (function () {
+          anime
+            .timeline({
+              easing: "linear",
+              duration: 2000,
+            })
+            .add({
+              targets: Src.problem_1_drone_front_image.item,
+              // rotate: 90,
+              delay: 1000,
+              complete() {
+                modalBoxOnComplete();
+              },
+            })
+            .add({
+              begin() {
+                Src.step_1_arrow_image_1.show().opacity(0);
+              },
+              targets: Src.step_1_arrow_image_1.item,
+              opacity: [0, 1],
+              easing: "linear",
+            })
+            .add({
+              begin() {
+                Src.problem_1_pmu_zoom_img.show().opacity(0);
+              },
+              targets: Src.problem_1_pmu_zoom_img.item,
+              opacity: [0, 1],
+              easing: "linear",
+            });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[0], nextAnime, 466, 345, 97, 478);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime2_video_box();
+        }
+      })();
+
+      function anime2_video_box() {
+        // main anime
+        (function () {
+          anime({
+            begin() {
+              videoBox.show("flex");
+            },
+            duration: 2000,
+            targets: videoBox.item,
+            opacity: [0, 1],
+            easing: "linear",
+            complete() {
+              modalBoxOnComplete();
+            },
+          });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[1], nextAnime, 658, 134, 110, 284);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime3_image();
+        }
+      }
+
+      function anime3_image(){
+        // main anime
+        (function () {
+          anime({
+            begin() {
+              videoBox.hide()
+              Src.pmu_img.show().opacity(0)
+              modalBoxOnComplete();
+            },
+            duration: 2000,
+            targets: Src.pmu_img.item,
+            opacity: [0, 1],
+            easing: "linear",
+          });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[2], nextAnime, 669, 151, 96, 268);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime4_text();
+        }
+      }
+
+      function anime4_text(){
+        // main anime
+        (function () {
+          anime({
+            begin() {
+              modalBoxOnComplete();
+            },
+          });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[3], nextAnime, 669, 151, 96, 268);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime7_end();
+        }
+      }
+
+      function anime7_end(){
+        // main anime
+        (function () {
+          let toHide = [
+            Src.pmu_img.hide(),
+            Src.step_1_arrow_image_1.hide(),
+            Src.problem_1_pmu_zoom_img.hide(),
+          ]
+          anime.timeline({
+            duration: 2000,
+            easing: "linear",
+          })
+          .add({
+            targets: Src.problem_1_drone_front_image.item,
+            left: 241,
+            top: -46,
+            hight: 380,
+            complete(){
+              modalBoxOnComplete()
+            }
+          })
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[4], nextAnime, 285, 363, 77, 404);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          Scenes.currentStep = 0
+          Scenes.StepProcess.done()
+        }
+      }
+      
       return true;
     },
-    // * Step 4
-    () => {
-      Scenes.StepProcess.start();
-      Src.issue_bat.set(0, 0);
-    },
+    
   ],
   // ! Scenes Process
   StepProcess: {
