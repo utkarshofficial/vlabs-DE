@@ -202,7 +202,7 @@ class Dom {
     rotate = 0
   ) {
     // because we added the blinkArrow image out of the anime-main
-    top += 130;
+    // top += 130;
     let blinkArrow = new Dom(".blinkArrow")
       .set(left, top, height, width)
       .rotate(rotate)

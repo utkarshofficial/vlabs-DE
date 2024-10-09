@@ -3,6 +3,7 @@
 /* it is for showing the current left top height with of the element  */
 .pixel-tooltip{
     position: absolute;
+    display: none;
     padding: 5px;
 }
 
