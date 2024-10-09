@@ -3,11 +3,16 @@
     "srcJSFilePath": "./js/Src.js",
     "imagesPath": "./src/images/step/",
     "images": [
+        "pmu_img.png",
         "problem_1_battery.png",
         "problem_1_battery_puffed.png",
         "problem_1_drone_front_image.png",
+        "problem_1_drone_front_with_pmu_image.png",
         "problem_1_drone_front_zoom_image.png",
         "problem_1_drone_front_zoom_image_2.png",
+        "problem_1_pmu_zoom_img.png",
+        "problem_1_pmu_zoom_img_2.png",
+        "problem_1_soldering_iron_of_connector.png",
         "step_1_arrow_image_1.png",
         "step_1_arrow_image_2.png"
     ],

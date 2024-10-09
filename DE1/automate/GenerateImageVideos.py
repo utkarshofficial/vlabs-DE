@@ -133,6 +133,7 @@ class Files:
 
     def updateIndexFile(self, newFileDataInLines: list[str]):
         with open(db.data.indexFilePath, 'w') as indexFile:
+            self.indexHTMLData = newFileDataInLines
             indexFile.writelines(newFileDataInLines)
             indexFile.close()
 
