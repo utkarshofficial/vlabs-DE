@@ -4,7 +4,17 @@ let Src = {
     // New src content added here
 
     // * New Images added here
+    black_arrow_1: new Dom("#black_arrow_1"),
+    black_arrow_2: new Dom("#black_arrow_2"),
+    btn_start_tracing_1: new Dom("#btn_start_tracing_1"),
+    btn_start_tracing_2: new Dom("#btn_start_tracing_2"),
+    drone_3d_img: new Dom("#drone_3d_img"),
+    intro_page: new Dom("#intro_page"),
+    issue_bat: new Dom("#issue_bat"),
+    issue_pmu: new Dom("#issue_pmu"),
     pmu_img: new Dom("#pmu_img"),
+    popup_1: new Dom("#popup_1"),
+    popup_2: new Dom("#popup_2"),
     problem_1_battery: new Dom("#problem_1_battery"),
     problem_1_battery_puffed: new Dom("#problem_1_battery_puffed"),
     problem_1_drone_front_image: new Dom("#problem_1_drone_front_image"),
