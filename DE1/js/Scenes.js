@@ -506,7 +506,7 @@ const Scenes = {
     // * Step3
     () => {
       Scenes.StepProcess.start();
-
+      Src.issue_bat.set(0,0)
     },
   ],
   // ! Scenes Process

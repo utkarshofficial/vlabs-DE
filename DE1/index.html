@@ -27,6 +27,7 @@
   <link href="./css/chart.css" rel="stylesheet" />
   <link href="./css/component_styling.css" rel="stylesheet" />
   <link href="./css/sliders.css" rel="stylesheet" />
+  <link href="./css/devlopment.css" rel="stylesheet" />
 
   <link href="./toolkit/fix_styling.css" rel="stylesheet" />
   <link href="./toolkit/toolkit.css" rel="stylesheet" />
@@ -44,8 +45,12 @@
     </p>
   </div>
 
-  <div class="main-container">
+  <div class="development-tools">
     
+  </div>
+
+  <div class="main-container">
+
     <!-- * Drawer Side Navbar -->
     <nav id="drawer" style="display: none;">
       <div class="codelab-time-container" style="display: none"></div>
@@ -430,36 +435,68 @@
             <div class="qs qs5">?</div>
             <div class="qs qs6">?</div>
 
+            <!-- ! Tooltip for viewing the pixels/size of elements -->
+            <span class="pixel-tooltip">
+              <div class="background"></div>
+              <div class="details">
+                <span class="text">L:</span> <span class="value">50</span>
+                <span class="text">T:</span> <span class="value">50</span>
+                <span class="text">H:</span> <span class="value">50</span>
+                <span class="text">W:</span> <span class="value">50</span>
+              </div>
+            </span>
             <!-- ! ++ Source Section Start ---------------------------------------->
             <!-- Step Images -->
             <div class="step-images">
               <!-- * Step Images will be added here -->
-              <img id="pmu_img" src="./src/images/step/pmu_img.png" class="main-window-imgs"/>
-              <img id="problem_1_battery" src="./src/images/step/problem_1_battery.png" class="main-window-imgs"/>
-              <img id="problem_1_battery_puffed" src="./src/images/step/problem_1_battery_puffed.png" class="main-window-imgs"/>
-              <img id="problem_1_drone_front_image" src="./src/images/step/problem_1_drone_front_image.png" class="main-window-imgs"/>
-              <img id="problem_1_drone_front_with_pmu_image" src="./src/images/step/problem_1_drone_front_with_pmu_image.png" class="main-window-imgs"/>
-              <img id="problem_1_drone_front_zoom_image" src="./src/images/step/problem_1_drone_front_zoom_image.png" class="main-window-imgs"/>
-              <img id="problem_1_drone_front_zoom_image_2" src="./src/images/step/problem_1_drone_front_zoom_image_2.png" class="main-window-imgs"/>
-              <img id="problem_1_pmu_zoom_img" src="./src/images/step/problem_1_pmu_zoom_img.png" class="main-window-imgs"/>
-              <img id="problem_1_pmu_zoom_img_2" src="./src/images/step/problem_1_pmu_zoom_img_2.png" class="main-window-imgs"/>
-              <img id="problem_1_soldering_iron_of_connector" src="./src/images/step/problem_1_soldering_iron_of_connector.png" class="main-window-imgs"/>
-              <img id="step_1_arrow_image_1" src="./src/images/step/step_1_arrow_image_1.png" class="main-window-imgs"/>
-              <img id="step_1_arrow_image_2" src="./src/images/step/step_1_arrow_image_2.png" class="main-window-imgs"/>
+              <img id="black_arrow_1" src="./src/images/step/black_arrow_1.png" class="main-window-imgs" />
+              <img id="black_arrow_2" src="./src/images/step/black_arrow_2.png" class="main-window-imgs" />
+              <img id="btn_start_tracing_1" src="./src/images/step/btn_start_tracing_1.png" class="main-window-imgs" />
+              <img id="btn_start_tracing_2" src="./src/images/step/btn_start_tracing_2.png" class="main-window-imgs" />
+              <img id="drone_3d_img" src="./src/images/step/drone_3d_img.png" class="main-window-imgs" />
+              <img id="intro_page" src="./src/images/step/intro_page.png" class="main-window-imgs" />
+              <img id="issue_bat" src="./src/images/step/issue_bat.png" class="main-window-imgs" />
+              <img id="issue_pmu" src="./src/images/step/issue_pmu.png" class="main-window-imgs" />
+              <img id="pmu_img" src="./src/images/step/pmu_img.png" class="main-window-imgs" />
+              <img id="popup_1" src="./src/images/step/popup_1.png" class="main-window-imgs" />
+              <img id="popup_2" src="./src/images/step/popup_2.png" class="main-window-imgs" />
+              <img id="problem_1_battery" src="./src/images/step/problem_1_battery.png" class="main-window-imgs" />
+              <img id="problem_1_battery_puffed" src="./src/images/step/problem_1_battery_puffed.png"
+                class="main-window-imgs" />
+              <img id="problem_1_drone_front_image" src="./src/images/step/problem_1_drone_front_image.png"
+                class="main-window-imgs" />
+              <img id="problem_1_drone_front_with_pmu_image"
+                src="./src/images/step/problem_1_drone_front_with_pmu_image.png" class="main-window-imgs" />
+              <img id="problem_1_drone_front_zoom_image" src="./src/images/step/problem_1_drone_front_zoom_image.png"
+                class="main-window-imgs" />
+              <img id="problem_1_drone_front_zoom_image_2"
+                src="./src/images/step/problem_1_drone_front_zoom_image_2.png" class="main-window-imgs" />
+              <img id="problem_1_pmu_zoom_img" src="./src/images/step/problem_1_pmu_zoom_img.png"
+                class="main-window-imgs" />
+              <img id="problem_1_pmu_zoom_img_2" src="./src/images/step/problem_1_pmu_zoom_img_2.png"
+                class="main-window-imgs" />
+              <img id="problem_1_soldering_iron_of_connector"
+                src="./src/images/step/problem_1_soldering_iron_of_connector.png" class="main-window-imgs" />
+              <img id="step_1_arrow_image_1" src="./src/images/step/step_1_arrow_image_1.png"
+                class="main-window-imgs" />
+              <img id="step_1_arrow_image_2" src="./src/images/step/step_1_arrow_image_2.png"
+                class="main-window-imgs" />
             </div>
             <!-- Step Videos -->
             <div class="step-videos">
               <!-- * Step Videos will be added here -->
               <video id="send_dropping" src="./src/videos/step/send_dropping.mp4" class="main-window-imgs"></video>
-              <video id="yoke_front_to_back" src="./src/videos/step/yoke_front_to_back.mp4" class="main-window-imgs"></video>
-              <video id="yoke_front_to_side" src="./src/videos/step/yoke_front_to_side.mp4" class="main-window-imgs"></video>
+              <video id="yoke_front_to_back" src="./src/videos/step/yoke_front_to_back.mp4"
+                class="main-window-imgs"></video>
+              <video id="yoke_front_to_side" src="./src/videos/step/yoke_front_to_side.mp4"
+                class="main-window-imgs"></video>
             </div>
             <!-- * Temp Text is like Text Box -->
             <div class="step-texts">
               <!-- <span class="temp temp-text2">This is a temp text</span> -->
             </div>
             <!-- * Components -->
-             <div class="step-components">
+            <div class="step-components">
               <div class="modal-box">
                 <div class="header">
                   <span class="title"></span>
@@ -469,7 +506,10 @@
                 </div>
                 <div class="body">
                   <p class="content">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur recusandae itaque inventore atque maxime consectetur repellat! Odio odit voluptatum quod recusandae repellendus eligendi asperiores facere temporibus dolore illum nisi laudantium ullam, eaque provident debitis voluptate esse quam ad sequi tenetur et, dicta numquam voluptatem? Ad in veritatis odio nisi enim.
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur recusandae itaque inventore
+                    atque maxime consectetur repellat! Odio odit voluptatum quod recusandae repellendus eligendi
+                    asperiores facere temporibus dolore illum nisi laudantium ullam, eaque provident debitis voluptate
+                    esse quam ad sequi tenetur et, dicta numquam voluptatem? Ad in veritatis odio nisi enim.
                   </p>
                 </div>
                 <div class="footer">
@@ -477,7 +517,7 @@
                   <button class="btn btn2">Save</button>
                 </div>
               </div>
-             </div>
+            </div>
             <!-- ! ++ Source Section Start End ------------------------------------->
 
           </section>
