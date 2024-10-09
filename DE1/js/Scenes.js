@@ -336,7 +336,8 @@ const Scenes = {
       Scenes.StepProcess.start();
       Scenes.experimentHeading("problem - 1 Drone is not powering up.");
   
-      Src.problem_1_drone_front_image.set(304, 60, 270).zIndex(1);
+      Src.drone_3d_img.set(304, 60, 270).zIndex(1);
+      console.log(Src.drone_3d_img)
 
       anime.timeline({
         easing: "linear",
