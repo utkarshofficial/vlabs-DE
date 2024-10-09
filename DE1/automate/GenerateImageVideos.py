@@ -154,7 +154,7 @@ class Generate:
 
     def __init__(self) -> None:
         self.addHTMLImgTagsToIndex()
-        self.addHTMLVideoTagsToIndex()
+        # self.addHTMLVideoTagsToIndex()
         self.addSrcToSrcJS()
 
     def addHTMLImgTagsToIndex(self):

@@ -285,14 +285,15 @@ const Scenes = {
       video.item.play();
     };
 
-    return videoBox
+    return videoBox;
   },
   // todo update this also
-  stepModal(content, 
-    mBoxLeft = null, 
+  stepModal(
+    content,
+    mBoxLeft = null,
     mBoxTop = null,
     mBoxHeight = null,
-    mBoxWidth = null,
+    mBoxWidth = null
   ) {
     let modalBox = new Dom(".modal-box");
     let modalContent = new Dom(".modal-box .content");
@@ -305,7 +306,7 @@ const Scenes = {
 
     modalBox.set(mBoxLeft, mBoxTop, mBoxHeight, mBoxWidth).show("flex");
 
-    return modalBox
+    return modalBox;
   },
   // for typing hello text
   student_name: "",
@@ -331,102 +332,135 @@ const Scenes = {
 
   */
   steps: [
-    // * Step1
+    // * Step 1
     () => {
       Scenes.StepProcess.start();
       Scenes.experimentHeading("problem - 1 Drone is not powering up.");
-  
-      Src.drone_3d_img.set(304, 60, 270).zIndex(1);
-      console.log(Src.drone_3d_img)
 
-      anime.timeline({
-        easing: "linear",
-        duration: 1000
-      })
-      .add({
-        targets: Src.problem_1_drone_front_image,
-        translatex: "20"
-      })
-  
-      Scenes.stepModal(
-        "Following Two issues can occur if the door is not powering up. <br> 1. Battery issues. <br> 2. PMU issues",
-        458, -18, 110, 478
-      ).hide()
+      Src.drone_3d_img.set(296, 33, 325).zIndex(1);
+      Src.black_arrow_1
+        .set(80 + 219, 83, 118)
+        .zIndex(1)
+        .hide();
+      Src.black_arrow_2
+        .set(80 + 233, 187, 118)
+        .zIndex(1)
+        .hide();
+      Src.issue_bat
+        .set(80 + 419, 8, 183)
+        .zIndex(1)
+        .hide();
+      Src.issue_pmu
+        .set(80 + 419, 217, 183)
+        .zIndex(1)
+        .hide();
+      Src.btn_start_tracing_1
+        .set(80 + 666, 138, 38)
+        .zIndex(2)
+        .hide();
+      Src.btn_start_tracing_2
+        .set(80 + 666, 347, 38)
+        .zIndex(2)
+        .hide();
 
+      anime
+        .timeline({
+          easing: "linear",
+        })
+        .add({
+          targets: Src.drone_3d_img.item,
+          left: [296, 17, 27],
+          top: [33, -32, 31],
+          duration: 3000,
+        })
+        .add(
+          {
+            begin() {
+              Src.black_arrow_1.show();
+            },
+            targets: Src.black_arrow_1.item,
+            opacity: [0, 1],
+            duration: 1000,
+          },
+          3000
+        )
+        .add(
+          {
+            begin() {
+              Src.black_arrow_2.show();
+            },
+            targets: Src.black_arrow_2.item,
+            opacity: [0, 1],
+            duration: 1000,
+          },
+          3000
+        )
+        .add({
+          begin() {
+            Src.issue_bat.show();
+            Src.btn_start_tracing_1.show();
+          },
+          targets: Src.issue_bat.item,
+          opacity: [0, 1],
+        })
+        .add({
+          begin() {
+            Src.issue_pmu.show();
+            Src.btn_start_tracing_2.show();
+          },
+          targets: Src.issue_pmu.item,
+          opacity: [0, 1],
+        });
 
+      let btns = [Src.btn_start_tracing_1, Src.btn_start_tracing_2];
 
+      btns[0].item.onclick = ops1;
+      btns[1].item.onclick = ops2;
 
+      function ops1() {
+        console.log("bat issue click");
+      }
+
+      function ops2() {
+        console.log("pmu issue click");
+      }
 
       setTimeout(() => {
+        // 801 , 546
         // Scenes.StepProcess.done()
-      }, 1000);
+      }, 8000);
       return true;
     },
+    //* step 2
     () => {
       Scenes.StepProcess.start();
-      Scenes.experimentHeading("problem - 1 Drone is not powering up.");
-      // Scenes.setStepHeading("Baṣttery Issues", "");
+      Scenes.experimentHeading("Battery issues");
 
-      // Scenes.items.table_mat.set(11,-14, null,925).styles({borderRadius: "40px", border: "solid 10px white"})
       Src.problem_1_drone_front_image.set(-13, -1, 400).zIndex(1);
       Src.problem_1_drone_front_zoom_image
         .set(388, 93, null, 264)
         .zIndex(1)
         .hide();
+      Src.problem_1_soldering_iron_of_connector
+        .set(388, 93, 311, 264)
+        .zIndex(1).hide()
       Src.step_1_arrow_image_1.set(243, 69, 116).zIndex(1).rotate(180).hide();
 
-      Scenes.videoBox(
+      let texts = [
+        "Check whether the connection between these two (deans plug and battery) is fine or not, there is no looseness anywhere.",
+        "The video next to it explains how they are connected to each other.",
+        "If it is connected properly then check whether the Dean plug is properly connected to the plate or not, whether the iron soldering is done properly or not.",
+        "If it is also connected properly then check that the battery is not puffed or swollen anywhere.",
+        "If everything is fine then there is no battery issue.",
+      ];
+
+      let videoBox = Scenes.videoBox(
         725,
         259,
         Src.yoke_front_to_side,
         150,
-        "Yoke Front to Side",
-      );
-
-      let text1 = new Elements.Text().dom;
-      let text2 = new Elements.Text().dom;
-      let text3 = new Elements.Text().dom;
-
-      Scenes.stepModal(
-        "Check whether the connection between these two (deans plug and battery) is fine or not, there is no looseness anywhere.",
-        458, -18, 110, 478
-      )
-
-      let textStyle = {
-        fontSize: "16px",
-        color: "#000000",
-        fontFamily: "Arial",
-        backgroundColor: "white",
-        padding: "10px",
-      };
-
-      text1
-        .set(516, -17)
-        .setContent(
-          "1. Check whether the connection between these two (deans plug and battery) is fine or not, there is no looseness anywhere."
-        )
-        .styles(textStyle)
-        .hide();
-      text2
-        .set(516, 24)
-        .setContent(
-          "2. The video next to it explains how they are connected to each other."
-        )
-        .styles({
-          ...textStyle,
-          width: "379px",
-        })
-        .hide();
-      text3
-        .set(516, 44)
-        .setContent(
-          "3. If it is connected properly then check whether the Dean plug is properly connected to the plate or not, whether the iron soldering is done properly or not."
-        )
-        .styles({
-          ...textStyle,
-          width: "379px",
-        })
-        .hide();
+        "Yoke Front to Side"
+      ).hide();
 
       anime
         .timeline({
@@ -436,6 +470,10 @@ const Scenes = {
         .add({
           targets: Src.problem_1_drone_front_image.item,
           rotate: 90,
+          delay: 1000,
+          complete(){
+            Scenes.stepModal(texts[0], 458, -18, 110, 478);
+          }
         })
         .add({
           begin() {
@@ -452,22 +490,41 @@ const Scenes = {
           targets: Src.problem_1_drone_front_zoom_image.item,
           opacity: [0, 1],
           easing: "linear",
-        });
-      // .add({
-      //   begin(){
-      //     videoBox.show().opacity(0)
-      //   },
-      //   targets: videoBox.item,
-      //   opacity: [0,1],
-      //   easing: "linear",
-      // })
+        
+        })
+      .add({
+        begin(){
+          videoBox.show("flex")
+        },
+        targets: videoBox.item,
+        opacity: [0,1],
+        easing: "linear",
+        complete(){
+          Scenes.stepModal(texts[1], 658, 134, 110, 284);
+
+        }
+      })
+      .add({
+        delay: 15000,
+        complete(){
+          Scenes.stepModal(texts[2], 458, -18, 110, 478);
+        }
+      })
+      .add({
+        begin(){
+          Src.problem_1_soldering_iron_of_connector.show()
+        },
+        targets: Src.problem_1_soldering_iron_of_connector.item,
+
+      })
+
 
       setTimeout(() => {
         // Scenes.StepProcess.done()
       }, 1000);
       return true;
     },
-    // * Step2
+    // * Step 3
     () => {
       Scenes.StepProcess.start();
       // Scenes.setStepHeading("Battery Issues", "2) Battery damage (e.g., puffiness).");
@@ -503,10 +560,9 @@ const Scenes = {
       Scenes.StepProcess.done();
       return true;
     },
-    // * Step3
+    // * Step 4
     () => {
       Scenes.StepProcess.start();
-
     },
   ],
   // ! Scenes Process
