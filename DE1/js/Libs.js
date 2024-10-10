@@ -5,12 +5,12 @@ import {Dom, DomList} from "./Dom.js";
 import Util from "./Util.js";
 import Elements from './Elements.js';
 import Anime from "./Anime.js";
-import Layout from "./layout.js";
+import Layout from "./Layout.js";
 import Download from "../toolkit/toolkit.js";
-import Src from "./src.js";
+import Src from "./Src.js";
 import Scenes from "./Scenes.js";
 import Events from "./Events.js";
-import Sliders from "./sliders.js";
+import Sliders from "./Sliders.js";
 
 
 export { 
