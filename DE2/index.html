@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Vlab</title>
+  <!-- CDN -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+  <!-- CDN END -->
+
+  <script src="./lib/anime.min.js"></script>
+  <script src="./lib/chart.min.js"></script>
+  <script src="./lib/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+  <script src="./lib/typed.js"></script>
+  <script src="./lib/jsplumb.js"></script>
+
+  <link href="./css/layout.css" rel="stylesheet" />
+  <link href="./css/progressBar.css" rel="stylesheet" />
+  <link href="./css/imgs.css" rel="stylesheet" />
+  <link href="./css/scenes.css" rel="stylesheet" />
+  <link href="./css/quiz.css" rel="stylesheet" />
+  <link href="./css/certificate.css" rel="stylesheet" />
+  <link href="./css/chart.css" rel="stylesheet" />
+  <link href="./css/component_styling.css" rel="stylesheet" />
+  <link href="./css/sliders.css" rel="stylesheet" />
+  <link href="./css/devlopment.css" rel="stylesheet" />
+
+  <link href="./toolkit/fix_styling.css" rel="stylesheet" />
+  <link href="./toolkit/toolkit.css" rel="stylesheet" />
+  <link href="./toolkit/toolkit.js" rel="stylesheet" />
+  <link href="./toolkit/main_spinner.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="main-spinner">
+    <div class="loader">
+      <span></span>
+    </div>
+    <p class="text">For Better User Experience, <span>reset zoom to 100% <br />(by pressing 'Ctrl + 0')</span> and
+      <span>refresh the page (by pressing 'Ctrl + R')</span>
+    </p>
+  </div>
+
+  <div class="development-tools">
+
+  </div>
+
+  <div class="main-container">
+
+    <!-- * Drawer Side Navbar -->
+    <nav id="drawer" style="display: none;">
+      <div class="codelab-time-container" style="display: none"></div>
+      <div class="steps">
+        <ol>
+          <!-- Todo Add this by Layout.js <li>
+            <a>
+              <span class="step">
+                <span class="step-text"> Circuit Formulation C-Filter. </span>
+              </span>
+            </a>
+          </li> -->
+          <li>
+            <a>
+              <span class="step">
+                <span class="step-text"> Circuit Formulation C-Filter. </span>
+              </span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </nav>
+    <div class="right-container">
+      <div class="right-box">
+
+        <!-- * Progress bar -->
+        <section class="progress-bar">
+          <div class="progressbar">
+            <!-- Todo link it with step-text add these step dynamicly using Layout.js -->
+            <div class="progress" id="progress"></div>
+            <div class="progress-step progress-step-active" data-tiltle=""></div>
+            <!-- <div class="progress-step" data-title=""></div> -->
+            <!-- <div class="progress-step progress-step-active" data-tiltle=""></div>
+            <div class="progress-step" data-title=""></div> -->
+          </div>
+        </section>
+
+        <!-- ! Main window -->
+        <main class="main-window">
+
+          <!-- transparent layer for question -->
+          <div class="transparent-box"></div>
+
+          <!-- * Anime Header -->
+          <section class="anime-header">
+            <p></p>
+            <div class="btn-popup-box">
+              <p class="btn-popup">Procedure</p>
+              <p class="btn-popup">Nomenclature</p>
+              <p class="btn-popup">Mathematical Expressions</p>
+              <img alt="" class="btn-popup-window" src="" />
+              <div class="btn-popup-window blur"></div>
+            </div>
+            <img class="btn btn-mute" src="./src/images/template_imgs/speech_off_btn.png"
+              style="height: 40px; z-index: 5; position: absolute; right: 5px" title="Click To Mute" />
+          </section>
+
+          <!-- * Project Intro Goes Here -->
+          <div class="project-intro">
+            <span class="heading">Objective:</span>
+            <p class="description">
+              To Set the Beam and Slab using Flex System.
+            </p>
+            <span class="heading">Apparatus Materials:</span>
+            <p class="description">
+              Tripod Stand, CT prop, fourway head, Aluminium Beam, Timber
+              Beam, Plywood Sheathing, Beam Forming support.
+            </p>
+          </div>
+
+          <!-- * Content Adder Box -->
+          <ul class="content-adder-box">
+            <!-- <li class="btn content-adder">Footing</li> -->
+          </ul>
+
+          <!-- * Blink Arrow -->
+          <img class="blinkArrow" src="./src/images/template_imgs/blinkArrow.webp" />
+
+          <!-- ! Anime main -->
+          <section class="anime-main">
+
+            <!-- * Steps Heading Template -->
+            <div class="step-heading">
+              <p class="step-title">Step 1</p>
+              <p class="step-description">
+                Calculation of cross-sectional area:
+              </p>
+            </div>
+
+            <!-- * Welcome note About Experiment-->
+            <div class="welcome-box">
+              <img alt="" class="iit-logo" src="./src/images/iit-delhi-logo.png" />
+              <div class="title">
+                <span>Welcome to</span>
+                <span>Foundation in Beam Formwork Experiment</span>
+                <span>of Formwork Technology in Civil Engineering Virtual
+                  Lab</span>
+                <span>developed by Prof. K. N. Jha, Department of Civil
+                  Engineering, IIT Delhi.</span>
+              </div>
+              <div class="prof-description">
+                <img alt="Prof. K. N. Jha Image" class="prof-img" src="./src/images/prof_image_kn_jha.jpeg" />
+                <span>Prof. K. N. Jha</span>
+                <span>IIT Delhi</span>
+              </div>
+            </div>
+
+            <!-- * Student Name section -->
+            <form class="user-input" onsubmit="return false">
+              <p>Enter your name:</p>
+              <input id="stuName" name="" type="text" />
+              <p class="error">Please enter your name before start</p>
+              <input class="btn" id="nameSubmitBtn" type="submit" value="Start" />
+            </form>
+
+            <!-- * Graphs -->
+            <div class="graph_box graph_box0">
+              <canvas class="graph graph0"></canvas>
+            </div>
+            <div class="graph_box graph_box1">
+              <canvas class="graph graph1"></canvas>
+            </div>
+            <div class="graph_box graph_box2">
+              <canvas class="graph graph2"></canvas>
+            </div>
+            <div class="graph_box graph_box3">
+              <canvas class="graph graph3"></canvas>
+            </div>
+            <div class="graph_box graph_box4">
+              <canvas class="graph graph4"></canvas>
+            </div>
+            <div class="graph_box graph_box5">
+              <canvas class="graph graph5"></canvas>
+            </div>
+            <div class="graph_box graph_box6">
+              <canvas class="graph graph6"></canvas>
+            </div>
+            <div class="graph_box graph_box7">
+              <canvas class="graph graph7"></canvas>
+            </div>
+            <div class="graph_box graph_box8">
+              <canvas class="graph graph8"></canvas>
+            </div>
+            <div class="graph_box graph_box9">
+              <canvas class="graph graph9"></canvas>
+            </div>
+            <div class="graph_box graph_box10">
+              <canvas class="graph graph10"></canvas>
+            </div>
+
+            <!-- Label for graph -->
+            <span class="temp xLabel" style="background-color: transparent; font-weight: bold"></span>
+            <span class="temp yLabel" style="background-color: transparent; font-weight: bold"></span>
+            <span class="temp xLabel2" style="background-color: transparent; font-weight: bold"></span>
+            <span class="temp yLabel2" style="background-color: transparent; font-weight: bold"></span>
+
+            <!-- ! for cicuit formulation -->
+            <!-- Connection Points -->
+            <div class="vertex-box">
+              <p class="vertex" id="vertex1" title="1">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex2" title="2">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex3" title="3">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex4" title="4">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex5" title="5">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex6" title="6">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex7" title="7">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex8" title="8">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex9" title="9">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex10" title="10">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex11" title="11">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex12" title="12">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex13" title="13">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex14" title="14">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex15" title="15">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex16" title="16">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex17" title="17">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex18" title="18">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex19" title="19">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex20" title="20">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex21" title="21">
+                <span class="text"></span>
+              </p>
+              <p class="vertex" id="vertex22" title="22">
+                <span class="text"></span>
+              </p>
+            </div>
+
+            <!-- * Result table -->
+            <!-- removed -->
+
+            <!-- * chart Js Canvas-->
+            <div class="chart">
+              <canvas id="myChart"></canvas>
+            </div>
+
+            <!-- * Input box format for in anime questions -->
+            <form class="temp-input" onsubmit="return false">
+              <span class="text1"></span><input class="input" id="ipnum" name="" type="text" /><span
+                class="text2"></span>
+              <p class="error"></p>
+              <input class="submit-btn btn" type="submit" value="Submit" />
+            </form>
+
+            <!-- * Step element -->
+
+            <!-- * Quiz container -->
+            <div class="quiz-container" id="quiz">
+              <div class="quiz-header">
+                <div class="title">
+                  <h2 id="question">Question text</h2>
+                  <!-- <span id="closeQuiz">X</span> -->
+                </div>
+                <ul>
+                  <li>
+                    <input class="answer" id="a" name="answer" type="radio" />
+                    <label for="a" id="a_text">Question</label>
+                  </li>
+                  <li>
+                    <input class="answer" id="b" name="answer" type="radio" />
+                    <label for="b" id="b_text">Question</label>
+                  </li>
+                  <li>
+                    <input class="answer" id="c" name="answer" type="radio" />
+                    <label for="c" id="c_text">Question</label>
+                  </li>
+                  <li>
+                    <input class="answer" id="d" name="answer" type="radio" />
+                    <label for="d" id="d_text">Question</label>
+                  </li>
+                  <li>
+                    <p id="quizAns" style="color: green">India</p>
+                  </li>
+                </ul>
+              </div>
+              <button id="quizSubmit">Submit</button>
+            </div>
+
+            <!-- * Certificate Template -->
+            <div class="certificate">
+              <div class="header">
+                <img alt="" class="logo" src="./src/images/logo.png" />
+                <span class="title cursive">Certificate of Completion</span>
+              </div>
+              <div class="student-detail">
+                <div class="row">
+                  <span class="bold red" id="certificateStuName" style="text-transform: capitalize">Sneha
+                    Jadon</span>
+                </div>
+                <div class="row">
+                  <span class="cursive" style="text-align: center">has succesfully performed Virtaul Lab
+                    Experiment on
+                  </span>
+                  <span class="bold sans red" style="font-size: 1.5rem; text-transform: capitalize">Foundation in
+                    foamwork</span>
+                </div>
+                <div class="">
+                  <!-- <span class="cursive">and secured</span>
+                          <span class="bold sans" id="quizScore">0</span>
+                          <span class="bold sans">/5 Marks</span>
+                          <span class="cursive">at</span> -->
+                  <span class="bold sans" id="certificateDate">Date 10-10-2023</span>
+                </div>
+                <div class="row">
+                  <span class="cursive">which is developed by
+                    <span class="bold sans">VIRTUAL LABS - IIT Delhi</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- * Slider Box -->
+
+            <!-- ! Delte Reset Buttons -->
+            <!-- * Button template -->
+            <div class="btn btn-reset">Reset</div>
+            <div class="btn btn-delete">Delete</div>
+            <div class="btn btn-check-connections">Check Connections</div>
+            <div class="btn btn-circuit-diagram" style="z-index: 2001">
+              Circuit Diagram
+            </div>
+            <div class="btn btn-connections" id="reset-connections">
+              Reset
+            </div>
+            <!-- ! transparent html element  -->
+            <button class="btn-transparent btn btn-disabled" disabled="" id="overPlayerNextBtn">
+              Next
+            </button>
+            <!-- ! Conecpt Development -->
+            <iframe class="concept_development" frameborder="0" height="700" src="./iframes/index.html"
+              width="1200"></iframe>
+            <!-- * Images that is used in all steps -->
+            <!-- * class main-window-imgs -->
+            <!-- ! Example ->
+                    <!-- ! template images->
+      
+                        <!-- ! Red blink arrow -->
+            <img class="blinkArrowRed" src="./src/images/template_imgs/blinkArrowRed.png">
+            <img alt="arrow" class="main-window-imgs" src="./src/images/template_imgs/arrow.png" title="arrow">
+            <img class="main-window-imgs" src="./src/images/template_imgs/blinkArrow.webp">
+            <img alt="laerrow" class="main-window-imgs" src="./src/images/template_imgs/laerrow.png" title="laerrow">
+            <img alt="laerrow2" class="main-window-imgs" src="./src/images/template_imgs/laerrow2.png"
+              title="laerrow2" />
+            <img alt="logo" class="main-window-imgs" src="./src/images/template_imgs/logo.png" title="logo" />
+            <img alt="man" class="main-window-imgs" src="./src/images/template_imgs/man.png" title="man" />
+            <img alt="measurearrow" class="main-window-imgs" src="./src/images/template_imgs/measurearrow.png"
+              title="measurearrow" />
+            <img alt="measurearrow2" class="main-window-imgs" src="./src/images/template_imgs/measurearrow2.png"
+              title="measurearrow2" />
+            <img alt="redsize" class="main-window-imgs" src="./src/images/template_imgs/redsize.png" title="redsize" />
+            <img alt="speech_off_btn" class="main-window-imgs" src="./src/images/template_imgs/speech_off_btn.png"
+              title="speech_off_btn" />
+            <img alt="speech_on_btn" class="main-window-imgs" src="./src/images/template_imgs/speech_on_btn.png"
+              title="speech_on_btn" />
+            <img alt="talk_cloud" class="main-window-imgs" src="./src/images/template_imgs/talk_cloud.png"
+              title="talk_cloud" />
+            <img alt="iit-delhi-logo" class="main-window-imgs" src="./src/images/template_imgs/iit-delhi-logo.png"
+              title="iit-delhi-logo" />
+            <!-- ! Template images end here -->
+
+            <!-- * Video Box -->
+            <div class="video-box">
+              <video autoplay="" class="video" muted="" src=""></video>
+              <div class="controls" title="Click to Restart">
+                <span class="title">Title</span>
+                <button class="btn restart">
+                  <img alt="" src="./src/images/template_imgs/restart_btn.png" />
+                </button>
+              </div>
+            </div>
+
+            <!-- * Image Box -->
+            <div class="image-box">
+              <img alt="" class="image" src="" />
+              <p class="title">Image Box</p>
+            </div>
+
+            <!-- * Question mark box -->
+            <div class="qs qs1">?</div>
+            <div class="qs qs2">?</div>
+            <div class="qs qs3">?</div>
+            <div class="qs qs4">?</div>
+            <div class="qs qs5">?</div>
+            <div class="qs qs6">?</div>
+
+            <!-- ! Tooltip for viewing the pixels/size of elements -->
+            <span class="pixel-tooltip">
+              <div class="background"></div>
+              <div class="details">
+                <span class="text">L:</span> <span class="value">50</span>
+                <span class="text">T:</span> <span class="value">50</span>
+                <span class="text">H:</span> <span class="value">50</span>
+                <span class="text">W:</span> <span class="value">50</span>
+              </div>
+            </span>
+            <!-- ! ++ Source Section Start ---------------------------------------->
+            <!-- Step Images -->
+            <div class="step-images">
+              <!-- * Step Images will be added here -->
+              <img id="black_arrow_1" src="./src/images/step/black_arrow_1.png" class="main-window-imgs"/>
+              <img id="black_arrow_2" src="./src/images/step/black_arrow_2.png" class="main-window-imgs"/>
+              <img id="btn_start_tracing_1" src="./src/images/step/btn_start_tracing_1.png" class="main-window-imgs btn-img"/>
+              <img id="btn_start_tracing_2" src="./src/images/step/btn_start_tracing_2.png" class="main-window-imgs btn-img"/>
+              <img id="drone_3d_img" src="./src/images/step/drone_3d_img.png" class="main-window-imgs"/>
+              <img id="intro_page" src="./src/images/step/intro_page.png" class="main-window-imgs"/>
+              <img id="issue_bat" src="./src/images/step/issue_bat.png" class="main-window-imgs"/>
+              <img id="issue_pmu" src="./src/images/step/issue_pmu.png" class="main-window-imgs"/>
+              <img id="pmu_img" src="./src/images/step/pmu_img.png" class="main-window-imgs"/>
+              <img id="popup_1" src="./src/images/step/popup_1.png" class="main-window-imgs"/>
+              <img id="popup_2" src="./src/images/step/popup_2.png" class="main-window-imgs"/>
+              <img id="pmu_img" src="./src/images/step/pmu_img.png" class="main-window-imgs"/>
+              <img id="problem_1_battery" src="./src/images/step/problem_1_battery.png" class="main-window-imgs"/>
+              <img id="problem_1_battery_puffed" src="./src/images/step/problem_1_battery_puffed.png" class="main-window-imgs"/>
+              <img id="problem_1_drone_front_image" src="./src/images/step/problem_1_drone_front_image.png" class="main-window-imgs"/>
+              <img id="problem_1_drone_front_with_pmu_image" src="./src/images/step/problem_1_drone_front_with_pmu_image.png" class="main-window-imgs"/>
+              <img id="problem_1_drone_front_zoom_image" src="./src/images/step/problem_1_drone_front_zoom_image.png" class="main-window-imgs"/>
+              <img id="problem_1_drone_front_zoom_image_2" src="./src/images/step/problem_1_drone_front_zoom_image_2.png" class="main-window-imgs"/>
+              <img id="problem_1_pmu_zoom_img" src="./src/images/step/problem_1_pmu_zoom_img.png" class="main-window-imgs"/>
+              <img id="problem_1_pmu_zoom_img_2" src="./src/images/step/problem_1_pmu_zoom_img_2.png" class="main-window-imgs"/>
+              <img id="problem_1_soldering_iron_of_connector" src="./src/images/step/problem_1_soldering_iron_of_connector.png" class="main-window-imgs"/>
+              <img id="step_1_arrow_image_1" src="./src/images/step/step_1_arrow_image_1.png" class="main-window-imgs"/>
+              <img id="step_1_arrow_image_2" src="./src/images/step/step_1_arrow_image_2.png" class="main-window-imgs"/>
+            </div>
+            <!-- Step Videos -->
+            <div class="step-videos">
+              <!-- * Step Videos will be added here -->
+              <video id="send_dropping" src="./src/videos/step/send_dropping.mp4" class="main-window-imgs"></video>
+              <video id="yoke_front_to_back" src="./src/videos/step/yoke_front_to_back.mp4"
+                class="main-window-imgs"></video>
+              <video id="yoke_front_to_side" src="./src/videos/step/yoke_front_to_side.mp4"
+                class="main-window-imgs"></video>
+            </div>
+            <!-- * Temp Text is like Text Box -->
+            <div class="step-texts">
+              <!-- <span class="temp temp-text2">This is a temp text</span> -->
+            </div>
+            <!-- * Components -->
+            <div class="step-components">
+              <div class="modal-box">
+                <div class="header">
+                  <span class="title"></span>
+                  <button class="btn close">
+                    <img src="https://img.icons8.com/?size=50&id=6483&format=png&color=000000" alt="">
+                  </button>
+                </div>
+                <div class="body">
+                  <p class="content">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur recusandae itaque inventore
+                    atque maxime consectetur repellat! Odio odit voluptatum quod recusandae repellendus eligendi
+                    asperiores facere temporibus dolore illum nisi laudantium ullam, eaque provident debitis voluptate
+                    esse quam ad sequi tenetur et, dicta numquam voluptatem? Ad in veritatis odio nisi enim.
+                  </p>
+                </div>
+                <div class="footer">
+                  <button class="btn btn1">Close</button>
+                  <button class="btn btn2">Save</button>
+                </div>
+              </div>
+            </div>
+            <!-- ! ++ Source Section Start End ------------------------------------->
+
+          </section>
+
+          <!-- * Anime Footer -->
+          <section class="anime-footer">
+            <btn class="btn btn-back" style="display: none">Back</btn>
+            <!-- * Bottom Subtitles Div -->
+            <div class="steps-subtitle" style="margin-left: 15px">
+              <!-- <p class="user-name">Hey👋 Sneha</p> -->
+              <p class="subtitle" id="subtitle" style="text-align: center; font-size: 1.3em"></p>
+            </div>
+            <btn class="btn btn-next">Next</btn>
+            <btn class="btn btn-save" style="position: absolute; right: 90px; bottom: 5px">Download</btn>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="toolkit">
+      <div class="btn-group">
+        <!-- <button class="btn mute">
+          <img class="btn-mute btn-logo"
+              src="./src/images/template_imgs/speech_off_btn.png"
+              title="Click To Mute"
+          />
+        </button> -->
+        <button class="btn btn-download-pdf" title="Download">
+          <span class="title">Download</span>
+          <img alt="" class="btn-logo" src="./toolkit/btn_download.png" />
+        </button>
+      </div>
+      <img class="blinkArrowYellow" src="./toolkit/setBlinkArrowYellow.png" />
+    </div>
+  </div>
+
+  <script type="module" src="./js/Libs.js"></script>
+  <script type="module" src="./js/Dom.js"></script>
+  <script type="module" src="./js/Elements.js"></script>
+  <script type="module" src="./js/Util.js"></script>
+  <script type="module" src="./js/Anime.js"></script>
+  <script type="module" src="./js/Scenes.js"></script>
+  <script type="module" src="./js/Events.js"></script>
+  <script type="module" src="./js/Src.js"></script>
+  <script type="module" src="./js/Layout.js"></script>
+  <script type="module" src="./js/formulas.js"></script>
+  <script type="module" src="./js/Sliders.js"></script>
+  <script type="module" src="./js/cables.js"></script>
+  <script type="module" src="./js/Main.js"></script>
+</body>
+
+</html>

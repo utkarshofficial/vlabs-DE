@@ -1,0 +1,36 @@
+/* * Dev Build Tools */
+
+/* it is for showing the current left top height with of the element  */
+.pixel-tooltip{
+    position: absolute;
+    display: none;
+    padding: 5px;
+}
+
+.pixel-tooltip .background{
+    box-shadow: 2px 2px 5px;
+    background-color: #202020;
+    filter: blur(6px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+    z-index: 5;
+}   
+
+.pixel-tooltip .details{
+    position: relative;
+    z-index: 5;
+    color: white;
+}
+
+.pixel-tooltip .details .value{
+    color: limegreen;
+    font-weight: bold;
+}
+
+/* * Tool Panel */
+/* Properties panel */
+

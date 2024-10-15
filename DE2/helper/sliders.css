@@ -1,0 +1,175 @@
+body{
+    background-color: #f1ece3;
+}
+.universal-slider{
+    display: none;
+}
+.universal-slider .slider-circuit{
+    height: 200px;
+    position: relative;
+    z-index: 20;
+}
+.universal-slider .slider-bcg{
+    height: 100px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    z-index: 20;
+}
+.slider .slider_R,.range-slider{
+    position: absolute;
+    left: 473px;
+    top: 115px;
+    z-index: 499;
+    -webkit-appearance: none;
+    appearance: none;
+    transform: rotate(-90deg);
+    width: 80px;
+    height: 30px;
+    height: 10px;
+    border-radius: 5px;
+    /* background: #d3d3d3; */
+    background: transparent;
+    outline: none;
+    opacity: 0.9;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+.slider .slider_R::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    background: url('./img/slider_tip.png');
+    background-position: center;
+    background-size: cover;
+    transform: rotate(90deg);
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
+.slider .slider_D::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    background: url('./img/slider_D_tip.png');
+    background-position: center;
+    background-size: cover;
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+
+.slider .slider_R:hover,.range-slider:hover{
+    /* background-color: black; */
+    opacity: 1;
+}
+
+.slider .slider_R+img{
+    position: absolute;
+    left: 489px;
+    top: 86px;
+    width: 46px;
+    z-index: 498;
+}
+.slider .r .slider-R-back{
+    position: absolute;
+    left: 480px;
+    top: 61px;
+    width: 54px;
+}
+.slider .r .value-box input{
+    font-size: 11px;
+}
+.slider .value-box{
+    background-color: white;
+    text-align: black;
+    border: 1px solid black;
+    width: fit-content;
+    display: flex;
+    padding: 0 3px;
+}
+.slider .value-box input{
+    border: none;
+    outline: none;
+    width: 25px;
+    font-weight: bold;
+}
+
+
+
+
+/* ! Fix positions of all slider input value */
+.slider .r .value-box{
+    font-size: 12px;
+    padding: 0 4px;
+    position: absolute;
+    left: 504px;
+    top: 67px;
+    z-index: 500;
+}
+/* slider d */
+.slider .slider_D{
+    transform: rotate(0deg);
+    left: 260px;
+    top: 124.8px;
+    width: 162.5px;
+    background-color: transparent;
+}
+
+.slider .d .value-box{
+    font-weight: 100;
+    width: 21px;
+    padding: 0;
+    position: absolute;
+    left: 423px;
+    top: 124px;
+    z-index: 500;
+}
+.slider .d .value-box input{
+    padding: 0 1px 3px 1px;
+    background: transparent;
+    font-size: 11px;
+    border: none;
+    outline: none;
+    width: 19px;
+    font-weight: bold;
+}
+.slider .slider_D+img{
+    height: 11px;
+    position: absolute;
+    left: 114px;
+    top: 126px;
+    width: 156px;
+    z-index: 10;
+}
+.slider .d .slider-D-body{
+    position: absolute;
+    left: 85px;
+    top: 102.5px;
+    height: 60px;
+    z-index: 10;
+}
+
+
+/* slider v */
+.slider .v .meter{
+    width: 113px;
+    position: absolute;
+    top: 12px;
+    left: 70px;
+}
+
+.slider .v .slider-V-arrow{
+    width: 35px;
+    position: absolute;
+    z-index: 200;
+    top: 97px;
+    width: 52px;
+    left: 72.5px;
+    transition: 0.3s;
+}
+.slider .v .value-box{
+    position: absolute;
+
+    top: 165px;
+    left: 79px;
+    z-index: 200;
+}

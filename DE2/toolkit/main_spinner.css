@@ -1,0 +1,173 @@
+:root {
+    --light-color: #c9bafc;
+    --mid-color: #9f91cc;
+    --dark-color: #3d246c;
+    --size: 30;
+    --trans: ease;
+  }
+
+  .main-spinner {
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-63%);
+    width: calc(var(--size) * 1vmin);
+    height: calc(var(--size) * 1vmin);
+    position: fixed;
+  }
+
+  .main-spinner:before {
+    content: "";
+    background: var(--mid-color);
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transform-origin: right bottom;
+    animation: shadow 4s var(--trans) 0s infinite;
+  }
+
+  .main-spinner:after {
+    content: "";
+    background: var(--mid-color);
+    width: 33.33%;
+    height: 33.33%;
+    position: absolute;
+    left: 50%;
+    top: 16.66%;
+    transform-origin: left bottom;
+    animation: shadow 4s var(--trans) 1s infinite;
+    transform: scale(0);
+    z-index: -1;
+  }
+
+  .main-spinner .loader {
+    width: calc(var(--size) * 0.5vmin);
+    height: calc(var(--size) * 0.5vmin);
+    background: var(--dark-color);
+    transform-origin: right bottom;
+    animation: outer 4s var(--trans) 0s infinite;
+    position: relative;
+  }
+
+  .main-spinner .loader span {
+    width: 50%;
+    height: 50%;
+    display: block;
+    background: var(--light-color);
+    transform-origin: right bottom;
+    animation: inner 1s ease-in-out 0.5s infinite;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+  }
+
+  .main-spinner a {
+    position: absolute;
+    font-size: 1.5vmin;
+    text-shadow: 0 0px 0 #000;
+    bottom: 5vmin;
+    font-family: Arial, Helvetica, serif;
+    text-decoration: none;
+    background: #111;
+    color: #fff;
+    padding: 1.25vmin 1.5vmin;
+    text-transform: uppercase;
+  }
+
+  .main-spinner a:hover {
+    background: #999;
+    color: #222;
+    text-shadow: -1px 0px 0 #fff8;
+  }
+
+  .main-spinner a span {
+    color: #454545;
+  }
+
+  .main-spinner .text{
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -66%);
+    padding: 7px;
+    width: 700px;
+    position: relative;
+    text-align: center;
+    z-index: 10;
+    font-size: 18px;
+  }
+
+  .main-spinner .text span{
+    line-height: 1.4;
+    color: #500051;
+    padding: 0 5px;
+    border-radius: 6px;
+    background-color: #6b6b6b42;
+    /* font-style: italic; */
+    font-weight: bold;
+  }
+
+  @keyframes outer {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    12.5% {
+      transform: rotate(90deg) scale(1);
+    }
+    25% {
+      transform: rotate(90deg) scale(0.75);
+    }
+    37.5% {
+      transform: rotate(180deg) scale(0.75);
+    }
+    50% {
+      transform: rotate(180deg) scale(0.5);
+    }
+    62.5% {
+      transform: rotate(270deg) scale(0.5);
+    }
+    75% {
+      transform: rotate(270deg) scale(0.25);
+    }
+    87.5% {
+      transform: rotate(360deg) scale(0.25);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  @keyframes inner {
+    50%,
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes shadow {
+    0%,
+    8.25% {
+      transform: scale(0);
+    }
+    16.5% {
+      transform: scale(1);
+    }
+    49.5% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(0) rotate(180deg);
+    }
+    50.5%,
+    58.25% {
+      transform: scale(0) rotate(180deg);
+    }
+    66.5% {
+      transform: scale(0.5) rotate(180deg);
+    }
+    100% {
+      transform: scale(0) rotate(180deg);
+    }
+  }

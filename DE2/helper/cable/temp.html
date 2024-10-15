@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JsPlumb Circuit Simulator</title>
+  <script src="js/jsplumb.js"></script>
+  <style>
+    .vertex {
+      width: 30px;
+      height: 30px;
+      background-color: #3498db;
+      color: #fff;
+      text-align: center;
+      line-height: 30px;
+      position: absolute;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Vertices -->
+<div class="vertex" id="vertex1" style="left: 50px; top: 50px;">1</div>
+<div class="vertex" id="vertex2" style="left: 150px; top: 50px;">2</div>
+<div class="vertex" id="vertex3" style="left: 250px; top: 50px;">3</div>
+<div class="vertex" id="vertex4" style="left: 350px; top: 50px;">4</div>
+<div class="vertex" id="vertex5" style="left: 450px; top: 50px;">5</div>
+<div class="vertex" id="vertex6" style="left: 550px; top: 50px;">6</div>
+<div class="vertex" id="vertex7" style="left: 650px; top: 50px;">7</div>
+<div class="vertex" id="vertex8" style="left: 750px; top: 50px;">8</div>
+<div class="vertex" id="vertex9" style="left: 850px; top: 50px;">9</div>
+<div class="vertex" id="vertex10" style="left: 950px; top: 50px;">10</div>
+
+<script>
+  $(document).ready(function() {
+    jsPlumb.ready(function () {
+
+      // Initialize jsPlumb
+      jsPlumb.setContainer(document.body);
+
+      // Configure connectors
+      jsPlumb.importDefaults({
+        Connector: ["Bezier", { curviness: 150 }],
+        Anchors: ["Right", "Left"],
+        Endpoint: ["Dot", { radius: 5 }],
+        EndpointStyle: { fill: "#3498db" }
+      });
+
+      // Create Endpoints for vertices
+      $(".vertex").each(function() {
+        jsPlumb.addEndpoint($(this), {
+          endpoint: "Blank",
+          anchor: "Continuous",
+          isTarget: true
+        });
+
+        jsPlumb.addEndpoint($(this), {
+          endpoint: "Blank",
+          anchor: "Continuous",
+          isSource: true
+        });
+      });
+
+      // Allow connections between vertices
+      jsPlumb.bind("connection", function(info) {
+        // Do something when a connection is established
+        console.log("Connection established:", info.connection);
+      });
+
+    });
+  });
+</script>
+
+</body>
+</html>
