@@ -988,19 +988,19 @@ const Scenes = {
         .zIndex(1)
         .hide();
       Src.issue_1
-        .set(80 + 419, 8, 183)
+        .set(80 + 419, -9, 195)
         .zIndex(1)
         .hide();
       Src.issue_2
-        .set(80 + 419, 217, 183)
+        .set(80 + 419, 209, 195)
         .zIndex(1)
         .hide();
       Src.btn_start_tracing_1
-        .set(80 + 666, 138, 38)
+        .set(80 + 666, 125, 38)
         .zIndex(2)
         .hide();
       Src.btn_start_tracing_2
-        .set(80 + 666, 347, 38)
+        .set(80 + 666, 350, 38)
         .zIndex(2)
         .hide();
 
@@ -1038,18 +1038,18 @@ const Scenes = {
         )
         .add({
           begin() {
-            Src.issue_bat.show();
+            Src.issue_1.show();
             Src.btn_start_tracing_1.show();
           },
-          targets: Src.issue_bat.item,
+          targets: Src.issue_1.item,
           opacity: [0, 1],
         })
         .add({
           begin() {
-            Src.issue_pmu.show();
+            Src.issue_2.show();
             Src.btn_start_tracing_2.show();
           },
-          targets: Src.issue_pmu.item,
+          targets: Src.issue_2.item,
           opacity: [0, 1],
         });
 
