@@ -3,11 +3,11 @@ import { Download, Scenes, Src, Dom, DomList, Util, DB, DeveloperTools } from ".
 
 document.addEventListener('DOMContentLoaded', ()=>{
   // stepcalling
-  Scenes.currentStep = 0;
+  Scenes.currentStep = 4;
   Scenes.next();
 
   Download.init()
-  DeveloperTools.init()
+  // DeveloperTools.init()
 
   $( function() {
     // $( "img" ).draggable({
