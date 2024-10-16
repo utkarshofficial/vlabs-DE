@@ -334,10 +334,55 @@ const Scenes = {
 
   */
   steps: [
+    
+    // * Step 0
+    () => {
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("Drone Repair and maintenance – I");
+
+      Src.drone_3d_img.set(11, 11, 260).zIndex(1);
+      Src.front_page_box.set(285+40, 63, 286, 618)
+      Src.problem_1.set(330+38, 125, 61).zIndex(1)
+      Src.problem_2.set(330+32, 226, 61).zIndex(1)
+
+
+      let droneAnime = anime({
+          targets: Src.drone_3d_img.item,
+          keyframes: [
+            {translateY: 105},
+            {translateY: 11},
+          ],
+          duration: 3000,
+          loop: true,
+          easing: "linear"
+        })
+
+      let btns = [Src.problem_1, Src.problem_2];
+
+      btns[0].item.onclick = ops1;
+      btns[1].item.onclick = ops2;
+
+      function ops1() {
+        droneAnime.reset()
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 1
+        Scenes.next()
+      }
+      
+      function ops2() {
+        droneAnime.reset()
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 4
+        Scenes.next()
+      }
+
+      return true;
+    },
+    //! problem 1
     // * Step 1
     () => {
       Scenes.StepProcess.start();
-      Scenes.experimentHeading("problem - 1 Drone is not powering up.");
+      Scenes.experimentHeading("Problem - 1 Drone is not powering up.");
 
       Src.drone_3d_img.set(296, 33, 325).zIndex(1);
       Src.black_arrow_1
@@ -349,11 +394,11 @@ const Scenes = {
         .zIndex(1)
         .hide();
       Src.issue_bat
-        .set(80 + 419, 8, 183)
+        .set(80 + 419, 8, 103)
         .zIndex(1)
         .hide();
       Src.issue_pmu
-        .set(80 + 419, 217, 183)
+        .set(80 + 419, 217, 103)
         .zIndex(1)
         .hide();
       Src.btn_start_tracing_1
@@ -433,6 +478,7 @@ const Scenes = {
 
       return true;
     },
+    //! problem 1 issue 1
     //* step 2
     () => {
       Scenes.StepProcess.start();
@@ -732,6 +778,7 @@ const Scenes = {
       
       return true;
     },
+    //! problem 1 issue 2
     // * Step 3
     () => {
       Scenes.StepProcess.start();
@@ -924,6 +971,108 @@ const Scenes = {
       
       return true;
     },
+
+    //! problem 2
+    //* step 4
+    () => {
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("Problem - 2 Drone does not respond to the controller");
+
+      Src.drone_3d_img.set(296, 33, 325).zIndex(1);
+      Src.black_arrow_1
+        .set(80 + 219, 83, 118)
+        .zIndex(1)
+        .hide();
+      Src.black_arrow_2
+        .set(80 + 233, 187, 118)
+        .zIndex(1)
+        .hide();
+      Src.issue_1
+        .set(80 + 419, 8, 183)
+        .zIndex(1)
+        .hide();
+      Src.issue_2
+        .set(80 + 419, 217, 183)
+        .zIndex(1)
+        .hide();
+      Src.btn_start_tracing_1
+        .set(80 + 666, 138, 38)
+        .zIndex(2)
+        .hide();
+      Src.btn_start_tracing_2
+        .set(80 + 666, 347, 38)
+        .zIndex(2)
+        .hide();
+
+      anime
+        .timeline({
+          easing: "linear",
+        })
+        .add({
+          targets: Src.drone_3d_img.item,
+          left: [296, 17, 27],
+          top: [33, -32, 31],
+          duration: 3000,
+        })
+        .add(
+          {
+            begin() {
+              Src.black_arrow_1.show();
+            },
+            targets: Src.black_arrow_1.item,
+            opacity: [0, 1],
+            duration: 1000,
+          },
+          3000
+        )
+        .add(
+          {
+            begin() {
+              Src.black_arrow_2.show();
+            },
+            targets: Src.black_arrow_2.item,
+            opacity: [0, 1],
+            duration: 1000,
+          },
+          3000
+        )
+        .add({
+          begin() {
+            Src.issue_bat.show();
+            Src.btn_start_tracing_1.show();
+          },
+          targets: Src.issue_bat.item,
+          opacity: [0, 1],
+        })
+        .add({
+          begin() {
+            Src.issue_pmu.show();
+            Src.btn_start_tracing_2.show();
+          },
+          targets: Src.issue_pmu.item,
+          opacity: [0, 1],
+        });
+
+      let btns = [Src.btn_start_tracing_1, Src.btn_start_tracing_2];
+
+      btns[0].item.onclick = ops1;
+      btns[1].item.onclick = ops2;
+
+      function ops1() {
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 1
+        Scenes.next()
+      }
+
+      function ops2() {
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 2
+        Scenes.next()
+      }
+
+      return true;
+    },
+
     
   ],
   // ! Scenes Process
