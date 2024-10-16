@@ -1,4 +1,4 @@
-import { Download, Scenes, Src, Dom, DomList, Util, DB } from "./Libs.js";
+import { Download, Scenes, Src, Dom, DomList, Util, DB, DeveloperTools } from "./Libs.js";
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -7,16 +7,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
   Scenes.next();
 
   Download.init()
+  DeveloperTools.init()
 
   $( function() {
-    $( "img" ).draggable({
-      drag: function(event, ui){
-        console.log(ui.position.left, ui.position.top)
-      }
-    });
-    $( ".temp" ).draggable();
-    $( ".video-box" ).draggable();
-    $( ".modal-box" ).draggable();
+    // $( "img" ).draggable({
+    //   drag: function(event, ui){
+    //     console.log(ui.position.left, ui.position.top)
+    //   }
+    // });
+    // $( ".temp" ).draggable();
+    // $( ".video-box" ).draggable();
+    // $( ".modal-box" ).draggable();
   } );
 });
 

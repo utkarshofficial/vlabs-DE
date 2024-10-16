@@ -11,6 +11,7 @@ import Src from "./Src.js";
 import Scenes from "./Scenes.js";
 import Events from "./Events.js";
 import Sliders from "./Sliders.js";
+import { DeveloperTools, PropertiesTab} from '../developer tools/developer_tools.js'
 
 
 export { 
@@ -26,4 +27,6 @@ export {
     Layout, 
     Sliders,
     DB,
+    DeveloperTools,
+    PropertiesTab,
 };
