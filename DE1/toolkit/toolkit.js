@@ -15,7 +15,7 @@ const Download = {
   previousRealCurrentStep: null,
   // 1 step aage
   // removeDownloadFromTheseSteps: [],
-  addDownloadToTheseSteps: [6,7],
+  addDownloadToTheseSteps: [],
   init() {
     this.setOnClicks();
     this.showTookitForCurrentStep();
