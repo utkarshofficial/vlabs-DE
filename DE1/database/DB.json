@@ -13,8 +13,10 @@
         "drone_3d_img.png",
         "drone_back_side.png",
         "drone_front_side.png",
+        "drone_front_side_after_removing_upper_plate.png",
         "flight_controller_zoom_img.png",
         "front_page_box.png",
+        "fullfinal_drone.png",
         "intro_page.png",
         "issue_1.png",
         "issue_2.png",
@@ -42,6 +44,8 @@
     ],
     "videosPath": "./src/videos/step/",
     "videos": [
+        "battery_remove.mp4",
+        "binding.mp4",
         "send_dropping.mp4",
         "yoke_front_to_back.mp4",
         "yoke_front_to_side.mp4"

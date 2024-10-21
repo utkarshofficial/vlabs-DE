@@ -334,10 +334,55 @@ const Scenes = {
 
   */
   steps: [
-    // * Step 1
+    
+    // * Step 0
     () => {
       Scenes.StepProcess.start();
-      Scenes.experimentHeading("problem - 1 Drone is not powering up.");
+      Scenes.experimentHeading("Drone Repair and maintenance – I");
+
+      Src.drone_3d_img.set(11, 11, 260).zIndex(1);
+      Src.front_page_box.set(285+40, 63, 286, 618)
+      Src.problem_1.set(330+38, 125, 61).zIndex(1)
+      Src.problem_2.set(330+32, 226, 61).zIndex(1)
+
+
+      let droneAnime = anime({
+          targets: Src.drone_3d_img.item,
+          keyframes: [
+            {translateY: 105},
+            {translateY: 11},
+          ],
+          duration: 3000,
+          loop: true,
+          easing: "linear"
+        })
+
+      let btns = [Src.problem_1, Src.problem_2];
+
+      btns[0].item.onclick = ops1;
+      btns[1].item.onclick = ops2;
+
+      function ops1() {
+        droneAnime.reset()
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 1
+        Scenes.next()
+      }
+      
+      function ops2() {
+        droneAnime.reset()
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 4
+        Scenes.next()
+      }
+
+      return true;
+    },
+    //! problem 1
+    // * Step1
+    () => {
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("Problem - 1 Drone is not powering up.");
 
       Src.drone_3d_img.set(296, 33, 325).zIndex(1);
       Src.black_arrow_1
@@ -421,19 +466,20 @@ const Scenes = {
 
       function ops1() {
         Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.currentStep = 1
+        Scenes.currentStep = 2
         Scenes.next()
       }
 
       function ops2() {
         Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.currentStep = 2
+        Scenes.currentStep = 3
         Scenes.next()
       }
 
       return true;
     },
-    //* step 2
+    //! problem 1 issue 1
+    //* step2
     () => {
       Scenes.StepProcess.start();
       Scenes.experimentHeading("Battery issues");
@@ -725,14 +771,15 @@ const Scenes = {
 
         // next anime on close
         function nextAnime() {
-          Scenes.currentStep = 0
+          Scenes.currentStep = 1
           Scenes.StepProcess.done()
         }
       }
       
       return true;
     },
-    // * Step 3
+    //! problem 1 issue 2
+    // * Step3
     () => {
       Scenes.StepProcess.start();
       Scenes.experimentHeading("PMU (Power management unit) issues");
@@ -924,6 +971,417 @@ const Scenes = {
       
       return true;
     },
+
+    //! problem 2
+    //* step4
+    () => {
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("Problem - 2 Drone does not respond to the controller");
+
+      Src.drone_3d_img.set(296, 33, 325).zIndex(1);
+      Src.black_arrow_1
+        .set(80 + 219, 83, 118)
+        .zIndex(1)
+        .hide();
+      Src.black_arrow_2
+        .set(80 + 233, 187, 118)
+        .zIndex(1)
+        .hide();
+      Src.issue_1
+        .set(80 + 419, -9, 195)
+        .zIndex(1)
+        .hide();
+      Src.issue_2
+        .set(80 + 419, 209, 195)
+        .zIndex(1)
+        .hide();
+      Src.btn_start_tracing_1
+        .set(80 + 666, 125, 38)
+        .zIndex(2)
+        .hide();
+      Src.btn_start_tracing_2
+        .set(80 + 666, 350, 38)
+        .zIndex(2)
+        .hide();
+
+      anime
+        .timeline({
+          easing: "linear",
+        })
+        .add({
+          targets: Src.drone_3d_img.item,
+          left: [296, 17, 27],
+          top: [33, -32, 31],
+          duration: 3000,
+        })
+        .add(
+          {
+            begin() {
+              Src.black_arrow_1.show();
+            },
+            targets: Src.black_arrow_1.item,
+            opacity: [0, 1],
+            duration: 1000,
+          },
+          3000
+        )
+        .add(
+          {
+            begin() {
+              Src.black_arrow_2.show();
+            },
+            targets: Src.black_arrow_2.item,
+            opacity: [0, 1],
+            duration: 1000,
+          },
+          3000
+        )
+        .add({
+          begin() {
+            Src.issue_1.show();
+            Src.btn_start_tracing_1.show();
+          },
+          targets: Src.issue_1.item,
+          opacity: [0, 1],
+        })
+        .add({
+          begin() {
+            Src.issue_2.show();
+            Src.btn_start_tracing_2.show();
+          },
+          targets: Src.issue_2.item,
+          opacity: [0, 1],
+        });
+
+      let btns = [Src.btn_start_tracing_1, Src.btn_start_tracing_2];
+
+      btns[0].item.onclick = ops1;
+      btns[1].item.onclick = ops2;
+
+      function ops1() {
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 5
+        Scenes.next()
+      }
+
+      function ops2() {
+        Scenes.StepProcess.setIsProcessRunning(false)
+        Scenes.currentStep = 6
+        Scenes.next()
+      }
+
+      return true;
+    },
+    //! problem 2 issue 1
+    //* step5
+    () => {
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("Incorrect ports or lack of power");
+
+      Src.drone_back_side.set(-43, -54, 506).zIndex(1);
+      Src.flight_controller_zoom_img
+        .set(361,49, null, 264)
+        .zIndex(1).hide()
+      // Src.step_1_arrow_image_1.set(283, 58, 89).zIndex(1).rotate(0).hide();
+      Src.step_1_arrow_image_1.set(197, 83, 116).zIndex(1).rotate(180).hide();
+      Src.pmu_img.set(628, 241, 133).hide()
+        
+
+      let texts = [
+        "Check whether the ports are appropriate connected or not.",
+
+        "The video next to it explains how they are connected.",
+
+        "If everything is fine then all the ports are connected properly.",
+
+      ];
+
+      let videoBox = Scenes.videoBox(
+        725,
+        259,
+        Src.yoke_front_to_side,
+        150,
+        "Yoke Front to Side"
+      ).hide();
+
+      // * Animation functions
+      (function anime1_drone() {
+        // main anime
+        (function () {
+          anime
+            .timeline({
+              easing: "linear",
+              duration: 2000,
+            })
+            .add({
+              targets: Src.drone_back_side.item,
+              // rotate: 90,
+              delay: 1000,
+              complete() {
+                modalBoxOnComplete();
+              },
+            })
+            .add({
+              begin() {
+                Src.step_1_arrow_image_1.show().opacity(0);
+              },
+              targets: Src.step_1_arrow_image_1.item,
+              opacity: [0, 1],
+              easing: "linear",
+            })
+            .add({
+              begin() {
+                Src.flight_controller_zoom_img.show().opacity(0);
+              },
+              targets: Src.flight_controller_zoom_img.item,
+              opacity: [0, 1],
+              easing: "linear",
+            });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[0], nextAnime, 466, 345, 97, 478);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime2_video_box();
+        }
+      })();
+
+      function anime2_video_box() {
+        // main anime
+        (function () {
+          anime({
+            begin() {
+              videoBox.show("flex");
+            },
+            duration: 2000,
+            targets: videoBox.item,
+            opacity: [0, 1],
+            easing: "linear",
+            complete() {
+              modalBoxOnComplete();
+            },
+          });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[1], nextAnime, 658, 134, 110, 284);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime7_end();
+        }
+      }
+
+      function anime4_text(){
+        // main anime
+        (function () {
+          anime({
+            begin() {
+              modalBoxOnComplete();
+            },
+          });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[3], nextAnime, 669, 151, 96, 268);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime7_end();
+        }
+      }
+
+      function anime7_end(){
+        // main anime
+        (function () {
+          let toHide = [
+            Src.pmu_img.hide(),
+            Src.step_1_arrow_image_1.hide(),
+            Src.flight_controller_zoom_img.hide(),
+            videoBox.hide()
+
+          ]
+          anime.timeline({
+            duration: 2000,
+            easing: "linear",
+          })
+          .add({
+            targets: Src.drone_back_side.item,
+            left: 241,
+            top: -83,
+            hight: 380,
+            complete(){
+              modalBoxOnComplete()
+            }
+          })
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[2], nextAnime, 268, 370, 77, 482);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          Scenes.currentStep = 4
+          Scenes.StepProcess.done()
+        }
+      }
+      
+      return true;
+    },
+    //! problem 2 issue 2
+  // * Step6
+  () => {
+    Scenes.StepProcess.start();
+    
+    Scenes.experimentHeading("Transmitter and receiver not bound");
+
+    Src.drone_front_side.set(-13, -1, 400).zIndex(1);
+    Src.receiver_zoom_img
+      .set(361,49, null, 264)
+      .zIndex(1).hide()
+    Src.step_1_arrow_image_1.set(107, 21, 171, 378).zIndex(1).rotate(168).hide();
+      
+
+    let texts = [
+      "Check whether the LED is stable or not if it’s not stable i.e. LED is blinking then bind it again with transmitter using binding key.",
+
+      "The video next to it explains how binding can be done.",
+
+      "If everything is fine then transmitter and receiver are bound correctly.",
+
+    ];
+
+    let videoBox = Scenes.videoBox(
+      725,
+      259,
+      Src.yoke_front_to_side,
+      150,
+      "Yoke Front to Side"
+    ).hide();
+
+    // * Animation functions
+    (function anime1_drone() {
+      // main anime
+      (function () {
+        anime
+          .timeline({
+            easing: "linear",
+            duration: 2000,
+          })
+          .add({
+            targets: Src.drone_front_side.item,
+            // rotate: 90,
+            delay: 1000,
+            complete() {
+              modalBoxOnComplete();
+            },
+          })
+          .add({
+            begin() {
+              Src.step_1_arrow_image_1.show().opacity(0);
+            },
+            targets: Src.step_1_arrow_image_1.item,
+            opacity: [0, 1],
+            easing: "linear",
+          })
+          .add({
+            begin() {
+              Src.receiver_zoom_img.show().opacity(0);
+            },
+            targets: Src.receiver_zoom_img.item,
+            opacity: [0, 1],
+            easing: "linear",
+          });
+      })();
+
+      // modal box
+      function modalBoxOnComplete() {
+        Scenes.stepModal(texts[0], nextAnime, 466, 345, 97, 478);
+      }
+
+      // next anime on close
+      function nextAnime() {
+        anime2_video_box();
+      }
+    })();
+
+    function anime2_video_box() {
+      // main anime
+      (function () {
+        anime({
+          begin() {
+            videoBox.show("flex");
+          },
+          duration: 2000,
+          targets: videoBox.item,
+          opacity: [0, 1],
+          easing: "linear",
+          complete() {
+            modalBoxOnComplete();
+          },
+        });
+      })();
+
+      // modal box
+      function modalBoxOnComplete() {
+        Scenes.stepModal(texts[1], nextAnime, 658, 134, 110, 284);
+      }
+
+      // next anime on close
+      function nextAnime() {
+        anime3_end();
+      }
+    }
+
+    function anime3_end(){
+      // main anime
+      (function () {
+        let toHide = [
+          Src.pmu_img.hide(),
+          Src.step_1_arrow_image_1.hide(),
+          Src.receiver_zoom_img.hide(),
+          videoBox.hide()
+
+        ]
+        anime.timeline({
+          duration: 2000,
+          easing: "linear",
+        })
+        .add({
+          targets: Src.drone_front_side.item,
+          left: 241,
+          top: -40,
+          hight: 380,
+          complete(){
+            modalBoxOnComplete()
+          }
+        })
+      })();
+
+      // modal box
+      function modalBoxOnComplete() {
+        Scenes.stepModal(texts[2], nextAnime, 225, 370, 77, 516 );
+      }
+
+      // next anime on close
+      function nextAnime() {
+        Scenes.currentStep = 0
+        Scenes.StepProcess.done()
+      }
+    }
+    
+    return true;
+  },
     
   ],
   // ! Scenes Process

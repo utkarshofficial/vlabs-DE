@@ -14,8 +14,10 @@ let Src = {
     drone_3d_img: new Dom("#drone_3d_img"),
     drone_back_side: new Dom("#drone_back_side"),
     drone_front_side: new Dom("#drone_front_side"),
+    drone_front_side_after_removing_upper_plate: new Dom("#drone_front_side_after_removing_upper_plate"),
     flight_controller_zoom_img: new Dom("#flight_controller_zoom_img"),
     front_page_box: new Dom("#front_page_box"),
+    fullfinal_drone: new Dom("#fullfinal_drone"),
     intro_page: new Dom("#intro_page"),
     issue_1: new Dom("#issue_1"),
     issue_2: new Dom("#issue_2"),
@@ -42,6 +44,8 @@ let Src = {
     transmitter: new Dom("#transmitter"),
 
     // * New Videos added here
+    battery_remove: new Dom("#battery_remove"),
+    binding: new Dom("#binding"),
     send_dropping: new Dom("#send_dropping"),
     yoke_front_to_back: new Dom("#yoke_front_to_back"),
     yoke_front_to_side: new Dom("#yoke_front_to_side"),

@@ -334,28 +334,23 @@ const Scenes = {
 
   */
   steps: [
-    
     // * Step 0
     () => {
       Scenes.StepProcess.start();
       Scenes.experimentHeading("Drone Repair and maintenance – I");
 
       Src.drone_3d_img.set(11, 11, 260).zIndex(1);
-      Src.front_page_box.set(285+40, 63, 286, 618)
-      Src.problem_1.set(330+38, 125, 61).zIndex(1)
-      Src.problem_2.set(330+32, 226, 61).zIndex(1)
-
+      Src.front_page_box.set(285 + 40, 63, 286, 618);
+      Src.problem_1.set(330 + 38, 125, 61).zIndex(1);
+      Src.problem_2.set(330 + 32, 226, 61).zIndex(1);
 
       let droneAnime = anime({
-          targets: Src.drone_3d_img.item,
-          keyframes: [
-            {translateY: 105},
-            {translateY: 11},
-          ],
-          duration: 3000,
-          loop: true,
-          easing: "linear"
-        })
+        targets: Src.drone_3d_img.item,
+        keyframes: [{ translateY: 105 }, { translateY: 11 }],
+        duration: 3000,
+        loop: true,
+        easing: "linear",
+      });
 
       let btns = [Src.problem_1, Src.problem_2];
 
@@ -363,17 +358,17 @@ const Scenes = {
       btns[1].item.onclick = ops2;
 
       function ops1() {
-        droneAnime.reset()
-        Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.currentStep = 1
-        Scenes.next()
+        droneAnime.reset();
+        Scenes.StepProcess.setIsProcessRunning(false);
+        Scenes.currentStep = 1;
+        Scenes.next();
       }
-      
+
       function ops2() {
-        droneAnime.reset()
-        Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.currentStep = 4
-        Scenes.next()
+        droneAnime.reset();
+        Scenes.StepProcess.setIsProcessRunning(false);
+        Scenes.currentStep = 4;
+        Scenes.next();
       }
 
       return true;
@@ -465,15 +460,15 @@ const Scenes = {
       btns[1].item.onclick = ops2;
 
       function ops1() {
-        Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.currentStep = 2
-        Scenes.next()
+        Scenes.StepProcess.setIsProcessRunning(false);
+        Scenes.currentStep = 2;
+        Scenes.next();
       }
 
       function ops2() {
-        Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.currentStep = 3
-        Scenes.next()
+        Scenes.StepProcess.setIsProcessRunning(false);
+        Scenes.currentStep = 3;
+        Scenes.next();
       }
 
       return true;
@@ -485,17 +480,20 @@ const Scenes = {
       Scenes.experimentHeading("Battery issues");
 
       Src.problem_1_drone_front_image.set(-13, -1, 400).zIndex(1);
-      Src.problem_1_drone_front_zoom_image
+      Src.flight_controller_zoom_img
         .set(388, 93, null, 264)
         .zIndex(1)
         .hide();
-        Src.problem_1_drone_front_zoom_image_2.set(388, 93, null, 264).zIndex(1).hide()
+      Src.problem_1_drone_front_zoom_image_2
+        .set(388, 93, null, 264)
+        .zIndex(1)
+        .hide();
       Src.problem_1_soldering_iron_of_connector
         .set(388, 93, 311, 264)
         .zIndex(1)
         .hide();
       Src.step_1_arrow_image_1.set(243, 69, 116).zIndex(1).rotate(180).hide();
-      Src.problem_1_battery_puffed.set(676,292,130).hide()
+      Src.problem_1_battery_puffed.set(676, 292, 130).hide();
 
       let texts = [
         "Check whether the connection between these two (deans plug and battery) is correct or not, there is no looseness anywhere.",
@@ -510,7 +508,7 @@ const Scenes = {
 
         "If everything is fine then there is no battery issue.",
 
-        "This video explains how iron soldering is done."
+        "This video explains how iron soldering is done.",
       ];
 
       let videoBox = Scenes.videoBox(
@@ -615,7 +613,10 @@ const Scenes = {
             })
             .add({
               begin() {
-                Src.step_1_arrow_image_1.set(190, 146, 116).opacity(0).rotate(180);
+                Src.step_1_arrow_image_1
+                  .set(190, 146, 116)
+                  .opacity(0)
+                  .rotate(180);
               },
               targets: Src.step_1_arrow_image_1.item,
               opacity: [0, 1],
@@ -665,7 +666,14 @@ const Scenes = {
 
         // modal box
         function modalBoxOnComplete() {
-          Scenes.stepModal(texts[texts.length - 1], nextAnime, 703, 147, 96, 239);
+          Scenes.stepModal(
+            texts[texts.length - 1],
+            nextAnime,
+            703,
+            147,
+            96,
+            239
+          );
         }
 
         // next anime on close
@@ -685,9 +693,12 @@ const Scenes = {
             .add({
               begin() {
                 modalBoxOnComplete();
-                Src.step_1_arrow_image_1.set(209, 115, 116).opacity(0).rotate(180)
-                Src.problem_1_soldering_iron_of_connector.hide()
-                videoBox.hide()
+                Src.step_1_arrow_image_1
+                  .set(209, 115, 116)
+                  .opacity(0)
+                  .rotate(180);
+                Src.problem_1_soldering_iron_of_connector.hide();
+                videoBox.hide();
               },
               targets: Src.step_1_arrow_image_1.item,
               opacity: [0, 1],
@@ -695,7 +706,7 @@ const Scenes = {
             .add({
               begin() {
                 Src.problem_1_drone_front_zoom_image_2
-                  .set(353,123,311)
+                  .set(353, 123, 311)
                   .opacity(0);
               },
               targets: Src.problem_1_drone_front_zoom_image_2.item,
@@ -714,13 +725,13 @@ const Scenes = {
         }
       }
 
-      function anime6_image(){
+      function anime6_image() {
         // main anime
         (function () {
           anime({
             begin() {
-              Src.problem_1_soldering_iron_of_connector.hide()
-              Src.problem_1_battery_puffed.set(678,191,130).show().opacity(0)
+              Src.problem_1_soldering_iron_of_connector.hide();
+              Src.problem_1_battery_puffed.set(678, 191, 130).show().opacity(0);
               modalBoxOnComplete();
             },
             duration: 2000,
@@ -741,27 +752,28 @@ const Scenes = {
         }
       }
 
-      function anime7_end(){
+      function anime7_end() {
         // main anime
         (function () {
           let toHide = [
             Src.problem_1_drone_front_zoom_image_2.hide(),
             Src.step_1_arrow_image_1.hide(),
             Src.problem_1_battery_puffed.hide(),
-          ]
-          anime.timeline({
-            duration: 2000,
-            easing: "linear",
-          })
-          .add({
-            targets: Src.problem_1_drone_front_image.item,
-            left: 241,
-            top: -46,
-            hight: 380,
-            complete(){
-              modalBoxOnComplete()
-            }
-          })
+          ];
+          anime
+            .timeline({
+              duration: 2000,
+              easing: "linear",
+            })
+            .add({
+              targets: Src.problem_1_drone_front_image.item,
+              left: 241,
+              top: -46,
+              hight: 380,
+              complete() {
+                modalBoxOnComplete();
+              },
+            });
         })();
 
         // modal box
@@ -771,11 +783,11 @@ const Scenes = {
 
         // next anime on close
         function nextAnime() {
-          Scenes.currentStep = 1
-          Scenes.StepProcess.done()
+          Scenes.currentStep = 1;
+          Scenes.StepProcess.done();
         }
       }
-      
+
       return true;
     },
     //! problem 1 issue 2
@@ -785,12 +797,9 @@ const Scenes = {
       Scenes.experimentHeading("PMU (Power management unit) issues");
 
       Src.problem_1_drone_front_image.set(-13, -1, 400).zIndex(1);
-      Src.problem_1_pmu_zoom_img
-        .set(361,49, null, 264)
-        .zIndex(1).hide()
+      Src.problem_1_pmu_zoom_img.set(361, 49, null, 264).zIndex(1).hide();
       Src.step_1_arrow_image_1.set(283, 58, 89).zIndex(1).rotate(180).hide();
-      Src.pmu_img.set(628, 241, 133).hide()
-        
+      Src.pmu_img.set(628, 241, 133).hide();
 
       let texts = [
         "Check neither PMU’s wire that is connected to flight controller or battery are loosely connected nor burnt.",
@@ -886,13 +895,13 @@ const Scenes = {
         }
       }
 
-      function anime3_image(){
+      function anime3_image() {
         // main anime
         (function () {
           anime({
             begin() {
-              videoBox.hide()
-              Src.pmu_img.show().opacity(0)
+              videoBox.hide();
+              Src.pmu_img.show().opacity(0);
               modalBoxOnComplete();
             },
             duration: 2000,
@@ -913,7 +922,7 @@ const Scenes = {
         }
       }
 
-      function anime4_text(){
+      function anime4_text() {
         // main anime
         (function () {
           anime({
@@ -934,27 +943,28 @@ const Scenes = {
         }
       }
 
-      function anime7_end(){
+      function anime7_end() {
         // main anime
         (function () {
           let toHide = [
             Src.pmu_img.hide(),
             Src.step_1_arrow_image_1.hide(),
             Src.problem_1_pmu_zoom_img.hide(),
-          ]
-          anime.timeline({
-            duration: 2000,
-            easing: "linear",
-          })
-          .add({
-            targets: Src.problem_1_drone_front_image.item,
-            left: 241,
-            top: -46,
-            hight: 380,
-            complete(){
-              modalBoxOnComplete()
-            }
-          })
+          ];
+          anime
+            .timeline({
+              duration: 2000,
+              easing: "linear",
+            })
+            .add({
+              targets: Src.problem_1_drone_front_image.item,
+              left: 241,
+              top: -46,
+              hight: 380,
+              complete() {
+                modalBoxOnComplete();
+              },
+            });
         })();
 
         // modal box
@@ -964,11 +974,11 @@ const Scenes = {
 
         // next anime on close
         function nextAnime() {
-          Scenes.currentStep = 0
-          Scenes.StepProcess.done()
+          Scenes.currentStep = 0;
+          Scenes.StepProcess.done();
         }
       }
-      
+
       return true;
     },
 
@@ -976,7 +986,9 @@ const Scenes = {
     //* step4
     () => {
       Scenes.StepProcess.start();
-      Scenes.experimentHeading("Problem - 2 Drone does not respond to the controller");
+      Scenes.experimentHeading(
+        "Problem - 2 Drone does not respond to the controller"
+      );
 
       Src.drone_3d_img.set(296, 33, 325).zIndex(1);
       Src.black_arrow_1
@@ -1059,15 +1071,15 @@ const Scenes = {
       btns[1].item.onclick = ops2;
 
       function ops1() {
-        Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.currentStep = 5
-        Scenes.next()
+        Scenes.StepProcess.setIsProcessRunning(false);
+        Scenes.currentStep = 5;
+        Scenes.next();
       }
 
       function ops2() {
-        Scenes.StepProcess.setIsProcessRunning(false)
-        Scenes.currentStep = 6
-        Scenes.next()
+        Scenes.StepProcess.setIsProcessRunning(false);
+        Scenes.currentStep = 6;
+        Scenes.next();
       }
 
       return true;
@@ -1078,34 +1090,118 @@ const Scenes = {
       Scenes.StepProcess.start();
       Scenes.experimentHeading("Incorrect ports or lack of power");
 
-      Src.drone_back_side.set(-43, -54, 506).zIndex(1);
-      Src.flight_controller_zoom_img
-        .set(361,49, null, 264)
-        .zIndex(1).hide()
-      // Src.step_1_arrow_image_1.set(283, 58, 89).zIndex(1).rotate(0).hide();
-      Src.step_1_arrow_image_1.set(197, 83, 116).zIndex(1).rotate(180).hide();
-      Src.pmu_img.set(628, 241, 133).hide()
-        
+      Src.fullfinal_drone.set(9, -12, 380).zIndex(1);
+      Src.drone_front_side_after_removing_upper_plate
+        .set(466, 61, 380)
+        .zIndex(1)
+        .hide();
+      Src.flight_controller_zoom_img.set(361, 49, null, 264).zIndex(1).hide();
+      Src.step_1_arrow_image_1.set(319, -19, 116).zIndex(1).rotate(196).hide();
+      Src.pmu_img.set(628, 241, 133).hide();
 
       let texts = [
+        "We have to remove the upper plate and battery to see the port's connection.",
+
+        "The video explains how to remove battery.",
+
+        "After removing the battery and upper plate.",
+
         "Check whether the ports are appropriate connected or not.",
 
-        "The video next to it explains how they are connected.",
+        "The video explains how ports should be connected.",
+
+        "You can also refer the above link for better understanding.",
 
         "If everything is fine then all the ports are connected properly.",
-
       ];
 
-      let videoBox = Scenes.videoBox(
-        725,
-        259,
-        Src.yoke_front_to_side,
-        150,
-        "Yoke Front to Side"
+      let st = {
+        cursor: "pointer",
+        backgroundColor: "white",
+        color: "blue",
+        fontWeight: "bold",
+        borderRadius: "10px",
+        padding: "10px",
+      };
+
+      let text = new Elements.Text().dom;
+      text
+        .setContent(
+          "<a target='_blank' href='https://virtual-labs.github.io/exp-drones-take-off-flight-and-landing-basics-iitd/simulation.html'> Click here to go to the Experiment</a>"
+        )
+        .set(677, 49, 39)
+        .styles(st)
+        .hide();
+
+      let videoBox1 = Scenes.videoBox(
+        491,
+        182,
+        Src.battery_remove,
+        200,
+        "How to remove battery"
       ).hide();
 
-      // * Animation functions
-      (function anime1_drone() {
+ 
+      let animeMove
+      (function anime1_text() {
+        // main anime
+        (function () {
+          animeMove = anime
+            .timeline({
+              targets: Src.fullfinal_drone.item,
+              translateY: [20, 0],
+              easing: "easeInOutQuad",
+              duration: 2000,
+              loop: true,
+            })
+            .add({
+              complete() {
+                modalBoxOnComplete();
+              },
+            });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[0], nextAnime, 485, 140, 102, 365);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime2_video_box();
+          animeMove.reset();
+        }
+      })();
+
+      function anime2_video_box() {
+        // main anime
+        (function () {
+          anime({
+            begin() {
+              videoBox1.show("flex");
+            },
+            duration: 2000,
+            targets: videoBox1.item,
+            opacity: [0, 1],
+            easing: "linear",
+            complete() {
+              modalBoxOnComplete();
+            },
+          });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[1], nextAnime, 495, 82, 80, 352);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime3_back_drone_come();
+        }
+      }
+
+      function anime3_back_drone_come() {
         // main anime
         (function () {
           anime
@@ -1114,6 +1210,9 @@ const Scenes = {
               duration: 2000,
             })
             .add({
+              begin(){
+                videoBox1.hide()
+              },
               targets: Src.drone_back_side.item,
               // rotate: 90,
               delay: 1000,
@@ -1131,9 +1230,257 @@ const Scenes = {
             })
             .add({
               begin() {
+                Src.drone_front_side_after_removing_upper_plate
+                  .show()
+                  .opacity(0);
+              },
+              targets: Src.drone_front_side_after_removing_upper_plate.item,
+              opacity: [0, 1],
+              easing: "linear",
+            });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[2], nextAnime, 565, -29, 73, 370);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime4_drone_shifting();
+        }
+      }
+
+      function anime4_drone_shifting() {
+        // main anime
+        (function () {
+          anime
+            .timeline({
+              easing: "linear",
+            })
+            .add({
+              begin(){
+                let toHide = [
+                  Src.fullfinal_drone.hide(),
+                  Src.step_1_arrow_image_1.hide()
+                ]
+              },
+              complete(){
+                modalBoxOnComplete()
+              },
+              targets: Src.drone_front_side_after_removing_upper_plate.item,
+              top: 9,
+              left: 12,
+              duration: 2000,
+            })
+            //* adding
+            .add({
+              begin() {
+                Src.step_1_arrow_image_1.set(243, 69, 116).zIndex(1).rotate(180).opacity(0);
+              },
+              targets: Src.step_1_arrow_image_1.item,
+              opacity: [0, 1],
+              easing: "linear",
+            })
+            .add({
+              begin() {
                 Src.flight_controller_zoom_img.show().opacity(0);
               },
               targets: Src.flight_controller_zoom_img.item,
+              opacity: [0, 1],
+              easing: "linear",
+            });
+        })();
+
+          // modal box
+          function modalBoxOnComplete() {
+            Scenes.stepModal(texts[3], nextAnime, 606, 327, 97, 330);
+          }
+  
+          // next anime on close
+          function nextAnime() {
+            anime5_video_box();
+          }
+      }
+
+      function anime5_video_box() {
+        // main anime
+        (function () {
+          anime({
+            begin() {
+              videoBox1 = Scenes.videoBox(
+                625, 202,
+                Src.battery_remove,
+                150,
+                "connection of flight controller and receiver."
+              )
+              videoBox1.show("flex");
+            },
+            duration: 2000,
+            targets: videoBox1.item,
+            opacity: [0, 1],
+            easing: "linear",
+            complete() {
+              modalBoxOnComplete();
+            },
+          });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[4], nextAnime, 679, 104, 90, 250);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime6_text();
+        }
+      }
+
+      function anime6_text() {
+        // main anime
+        (function () {
+          anime({
+            begin() {
+              text.show();
+              modalBoxOnComplete();
+            },
+          });
+        })();
+
+        //modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[5], nextAnime, 658, 134-40, 94, 284);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          anime7_end();
+        }
+      }
+
+      function anime7_end() {
+        // main anime
+        (function () {
+          let toHide = [
+            text.hide(),
+            videoBox1.hide(),
+            Src.fullfinal_drone.hide(),
+            Src.step_1_arrow_image_1.hide(),
+            Src.flight_controller_zoom_img.hide(),
+          ];
+          anime
+            .timeline({
+              duration: 2000,
+              easing: "linear",
+            })
+            .add({
+              targets: Src.drone_front_side_after_removing_upper_plate.item,
+              left: 284,
+              top: -28,
+              hight: 380,
+              complete() {
+                modalBoxOnComplete();
+              },
+            });
+        })();
+
+        // modal box
+        function modalBoxOnComplete() {
+          Scenes.stepModal(texts[texts.length - 1], nextAnime, 268, 370, 77, 482);
+        }
+
+        // next anime on close
+        function nextAnime() {
+          Scenes.currentStep = 4;
+          Scenes.StepProcess.done();
+        }
+      }
+
+      return true;
+    },
+
+    //! problem 2 issue 2
+    // * Step6
+    () => {
+      Scenes.StepProcess.start();
+
+      Scenes.experimentHeading("Transmitter and receiver not bound");
+
+      Src.fullfinal_drone.set(0, -1, 400).zIndex(1);
+      Src.receiver_zoom_img.set(361, 49, null, 264).zIndex(1).hide();
+      Src.step_1_arrow_image_1
+        .set(125, 24, 165, 359)
+        .zIndex(1)
+        .rotate(168)
+        .hide();
+
+      let st = {
+        cursor: "pointer",
+        backgroundColor: "white",
+        color: "blue",
+        fontWeight: "bold",
+        borderRadius: "10px",
+        padding: "10px",
+      };
+
+      let text = new Elements.Text().dom;
+      text
+        .setContent(
+          "<a target='_blank' href='https://virtual-labs.github.io/exp-drones-take-off-flight-and-landing-basics-iitd/simulation.html'> Click here to go to the Experiment</a>"
+        )
+        .set(677, 84, 39)
+        .styles(st)
+        .hide();
+
+      let texts = [
+        "Check whether the LED is stable or not if it’s not stable i.e. LED is blinking then bind it again with transmitter using binding key.",
+
+        "The video next to it explains how receiver is bind with transmitter.",
+
+        "You can also refer the above link for better understanding.",
+
+        "If everything is fine then transmitter and receiver are bind correctly.",
+      ];
+
+      let videoBox = Scenes.videoBox(
+        661,
+        259,
+        Src.binding,
+        150,
+        "Binding"
+      ).hide();
+
+      // * Animation functions
+      (function anime1_drone() {
+        // main anime
+        (function () {
+          anime
+            .timeline({
+              easing: "linear",
+              duration: 2000,
+            })
+            .add({
+              targets: Src.fullfinal_drone.item,
+              // rotate: 90,
+              delay: 1000,
+              complete() {
+                modalBoxOnComplete();
+              },
+            })
+            .add({
+              begin() {
+                Src.step_1_arrow_image_1.show().opacity(0);
+              },
+              targets: Src.step_1_arrow_image_1.item,
+              opacity: [0, 1],
+              easing: "linear",
+            })
+            .add({
+              begin() {
+                Src.receiver_zoom_img.show().opacity(0);
+              },
+              targets: Src.receiver_zoom_img.item,
               opacity: [0, 1],
               easing: "linear",
             });
@@ -1174,215 +1521,71 @@ const Scenes = {
 
         // next anime on close
         function nextAnime() {
-          anime7_end();
+          anime3_text();
         }
       }
 
-      function anime4_text(){
+      function anime3_text() {
         // main anime
         (function () {
           anime({
             begin() {
+              text.show();
               modalBoxOnComplete();
             },
           });
         })();
 
-        // modal box
+        //modal box
         function modalBoxOnComplete() {
-          Scenes.stepModal(texts[3], nextAnime, 669, 151, 96, 268);
+          Scenes.stepModal(texts[2], nextAnime, 658, 134, 110, 284);
         }
 
         // next anime on close
         function nextAnime() {
-          anime7_end();
+          anime4_end();
         }
       }
 
-      function anime7_end(){
+      function anime4_end() {
         // main anime
         (function () {
           let toHide = [
-            Src.pmu_img.hide(),
+            text.hide(),
             Src.step_1_arrow_image_1.hide(),
-            Src.flight_controller_zoom_img.hide(),
-            videoBox.hide()
-
-          ]
-          anime.timeline({
-            duration: 2000,
-            easing: "linear",
-          })
-          .add({
-            targets: Src.drone_back_side.item,
-            left: 241,
-            top: -83,
-            hight: 380,
-            complete(){
-              modalBoxOnComplete()
-            }
-          })
+            Src.receiver_zoom_img.hide(),
+            videoBox.hide(),
+          ];
+          anime
+            .timeline({
+              duration: 2000,
+              easing: "linear",
+            })
+            .add({
+              targets: Src.fullfinal_drone.item,
+              left: 241,
+              top: -40,
+              hight: 380,
+              complete() {
+                modalBoxOnComplete();
+              },
+            });
         })();
 
         // modal box
         function modalBoxOnComplete() {
-          Scenes.stepModal(texts[2], nextAnime, 268, 370, 77, 482);
+          Scenes.stepModal(texts[3], nextAnime, 225, 370, 77, 516);
         }
 
         // next anime on close
         function nextAnime() {
-          Scenes.currentStep = 4
-          Scenes.StepProcess.done()
+          Scenes.currentStep = 0;
+          Scenes.StepProcess.done();
         }
       }
-      
+
       return true;
     },
-    //! problem 2 issue 2
-  // * Step6
-  () => {
-    Scenes.StepProcess.start();
-    
-    Scenes.experimentHeading("Transmitter and receiver not bound");
-
-    Src.drone_front_side.set(-13, -1, 400).zIndex(1);
-    Src.receiver_zoom_img
-      .set(361,49, null, 264)
-      .zIndex(1).hide()
-    Src.step_1_arrow_image_1.set(107, 21, 171, 378).zIndex(1).rotate(168).hide();
-      
-
-    let texts = [
-      "Check whether the LED is stable or not if it’s not stable i.e. LED is blinking then bind it again with transmitter using binding key.",
-
-      "The video next to it explains how binding can be done.",
-
-      "If everything is fine then transmitter and receiver are bound correctly.",
-
-    ];
-
-    let videoBox = Scenes.videoBox(
-      725,
-      259,
-      Src.yoke_front_to_side,
-      150,
-      "Yoke Front to Side"
-    ).hide();
-
-    // * Animation functions
-    (function anime1_drone() {
-      // main anime
-      (function () {
-        anime
-          .timeline({
-            easing: "linear",
-            duration: 2000,
-          })
-          .add({
-            targets: Src.drone_front_side.item,
-            // rotate: 90,
-            delay: 1000,
-            complete() {
-              modalBoxOnComplete();
-            },
-          })
-          .add({
-            begin() {
-              Src.step_1_arrow_image_1.show().opacity(0);
-            },
-            targets: Src.step_1_arrow_image_1.item,
-            opacity: [0, 1],
-            easing: "linear",
-          })
-          .add({
-            begin() {
-              Src.receiver_zoom_img.show().opacity(0);
-            },
-            targets: Src.receiver_zoom_img.item,
-            opacity: [0, 1],
-            easing: "linear",
-          });
-      })();
-
-      // modal box
-      function modalBoxOnComplete() {
-        Scenes.stepModal(texts[0], nextAnime, 466, 345, 97, 478);
-      }
-
-      // next anime on close
-      function nextAnime() {
-        anime2_video_box();
-      }
-    })();
-
-    function anime2_video_box() {
-      // main anime
-      (function () {
-        anime({
-          begin() {
-            videoBox.show("flex");
-          },
-          duration: 2000,
-          targets: videoBox.item,
-          opacity: [0, 1],
-          easing: "linear",
-          complete() {
-            modalBoxOnComplete();
-          },
-        });
-      })();
-
-      // modal box
-      function modalBoxOnComplete() {
-        Scenes.stepModal(texts[1], nextAnime, 658, 134, 110, 284);
-      }
-
-      // next anime on close
-      function nextAnime() {
-        anime3_end();
-      }
-    }
-
-    function anime3_end(){
-      // main anime
-      (function () {
-        let toHide = [
-          Src.pmu_img.hide(),
-          Src.step_1_arrow_image_1.hide(),
-          Src.receiver_zoom_img.hide(),
-          videoBox.hide()
-
-        ]
-        anime.timeline({
-          duration: 2000,
-          easing: "linear",
-        })
-        .add({
-          targets: Src.drone_front_side.item,
-          left: 241,
-          top: -40,
-          hight: 380,
-          complete(){
-            modalBoxOnComplete()
-          }
-        })
-      })();
-
-      // modal box
-      function modalBoxOnComplete() {
-        Scenes.stepModal(texts[2], nextAnime, 225, 370, 77, 516 );
-      }
-
-      // next anime on close
-      function nextAnime() {
-        Scenes.currentStep = 0
-        Scenes.StepProcess.done()
-      }
-    }
-    
-    return true;
-  },
-    
   ],
   // ! Scenes Process
   StepProcess: {
