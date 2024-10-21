@@ -1,0 +1,39 @@
+Dear Sir,
+
+I hope this email finds you well.
+
+I am pleased to inform you that the V-Labs experiments for Formwork have been completed as per your requirements. Below are the Experiment's Links:
+
+Issue No. 871
+
+Exp 1 - Foundation formwork (PERI)
+Link - https://virtual-labs.github.io/exp-foundation-formwork-peri-iitd/
+
+Exp 2 - Formwork for foundation
+Link - https://virtual-labs.github.io/exp-formwork-for-foundation-iitd/
+
+Exp 3 - Formwork for wall- simple and climbing formwork
+Link - https://virtual-labs.github.io/exp-formwork-for-wall-iitd
+
+Exp 4 - Formwork for column
+Link - https://virtual-labs.github.io/exp-formwork-for-column-iitd
+
+Exp 5 - Formwork for beam and slab using HD Towers
+Link - https://virtual-labs.github.io/exp-formwork-beam-and-slab-using-hd-towers-iitd/
+
+Exp 6 - Beam forming formwork.
+Link - https://virtual-labs.github.io/exp-beam-forming-formwork-iitd/
+
+Exp 7 - Beam and slab using Flex System
+Link - https://virtual-labs.github.io/exp-beam-and-slab-using-flex-system-iitd/
+
+Exp 8 - Column (PERI)
+Link - https://virtual-labs.github.io/exp-column-peri-iitd/
+
+Exp 9 - Wall (PERI)
+Link - https://virtual-labs.github.io/exp-wall-peri-iitd/
+
+Exp 10 - Monolithic
+Link - https://virtual-labs.github.io/exp-monolithic-iitd/
+
+Best regards,
