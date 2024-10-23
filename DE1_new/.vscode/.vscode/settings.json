@@ -1,0 +1,8 @@
+{
+    "auto-run-command.commands": [
+        {
+            "command": "workbench.action.tasks.runTask",
+            "args": "Start Both Servers"
+        }
+    ]
+}

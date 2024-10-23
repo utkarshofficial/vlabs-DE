@@ -7,7 +7,7 @@ class Dom {
       this.item = Util.get(selector);
     } else if (selector instanceof HTMLElement) {
       this.item = selector;
-    } 
+    }
     // old when we use src.js
     // else {
     //   this.item = Src.get(selector);
@@ -157,41 +157,123 @@ class Dom {
     Dom.arrayOfItems = [];
   }
   static setBlinkArrowRed(
-    isX = true,
     left = null,
     top = null,
-    height = 30,
-    width = null,
-    rotate = 0
+    rotate = 0,
+    height = 40,
+    width = null
   ) {
     let blinkArrow = new Dom(".blinkArrowRed")
       .set(left, top, height, width)
       .rotate(rotate)
       .zIndex(10000);
-    if (isX === -1) {
-      blinkArrow.hide();
-      return;
-    }
-    let x = 0,
-      y = 0;
-    if (isX) {
-      x = 20;
-    } else {
-      y = 20;
-    }
+    let y = 20;
+
     var blink = anime({
       targets: blinkArrow.item,
       easing: "easeInOutQuad",
       opacity: 1,
-      translateX: x,
       translateY: y,
       direction: "alternate",
       loop: true,
       autoplay: false,
       duration: 300,
     });
+    return {
+      reset() {
+        blinkArrow.hide();
+        blink.reset();
+      },
+      play() {
+        blink.play();
+      },
+    };
+  }
+  static setBlinkArrowOnElement(
+    connectingElement,
+    direction,
+    arrowLeft = null,
+    arrowTop = null
+  ) {
+    let blinkArrow = new Dom(".blinkArrowRed");
+    let arrowHeight = 40;
+    let arrowWidth = 34;
+    let arrowRotate = 0;
+    let gap = 10
 
-    return blink;
+    // get left top height and width of the connectingElement
+    const connectingElementProps = {
+      left: connectingElement.item.offsetLeft,
+      top: connectingElement.item.offsetTop,
+      right: Number(
+        connectingElement.item.offsetLeft + connectingElement.item.offsetWidth
+      ),
+      bottom: Number(
+        connectingElement.item.offsetTop + connectingElement.item.offsetHeight
+      ),
+      centerX: Number(
+        connectingElement.item.offsetLeft +
+          connectingElement.item.offsetWidth / 2
+      ).toFixed(2),
+      centerY: Number(
+        connectingElement.item.offsetTop +
+          connectingElement.item.offsetHeight / 2
+      ).toFixed(2),
+    };
+
+    for(let key in  connectingElementProps) {
+      console.log(connectingElement.item)
+      console.log(`${key}: ${connectingElementProps[key]}`)
+    }
+
+    switch (direction) {
+      case "left":
+        arrowRotate = 90;
+        arrowLeft = connectingElementProps.left -  arrowWidth - gap;
+        arrowTop = connectingElementProps.centerY - arrowHeight / 2;
+        break;
+
+      case "right":
+        arrowRotate = -90;
+        arrowLeft = connectingElementProps.right + gap;
+        arrowTop = connectingElementProps.centerY - arrowHeight / 2;
+        break;
+
+      case "top":
+        arrowRotate = -180;
+        arrowLeft = connectingElementProps.centerX - arrowWidth / 2;
+        arrowTop = connectingElementProps.top - arrowHeight - gap
+        break;
+
+      case "bottom":
+        arrowRotate = 0;
+        arrowLeft = connectingElementProps.centerX - arrowWidth / 2;
+        arrowTop = connectingElementProps.bottom + gap;
+        break;
+    }
+
+    blinkArrow.set(arrowLeft, arrowTop, arrowHeight, arrowWidth).rotate(arrowRotate).zIndex(10000);
+    let y = 20;
+
+    var blink = anime({
+      targets: blinkArrow.item,
+      easing: "easeInOutQuad",
+      opacity: 1,
+      translateY: y,
+      direction: "alternate",
+      loop: true,
+      autoplay: false,
+      duration: 300,
+    });
+    return {
+      reset() {
+        blinkArrow.hide();
+        blink.reset();
+      },
+      play() {
+        blink.play();
+      },
+    };
   }
   static setBlinkArrow(
     isX = true,
@@ -239,10 +321,10 @@ class Dom {
   forMathematicalExpressionBtn = 0;
 }
 
-class DomList{
-  constructor (selector){
-    this.items = Util.getAll(selector).map(ele=>new Dom(ele))
+class DomList {
+  constructor(selector) {
+    this.items = Util.getAll(selector).map((ele) => new Dom(ele));
   }
 }
 
-export {Dom, DomList};
+export { Dom, DomList };

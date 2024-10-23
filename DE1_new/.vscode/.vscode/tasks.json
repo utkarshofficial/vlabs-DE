@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Backend Server",
+            "type": "shell",
+            "command": "python manage.py runserver", 
+            "options": {
+                "cwd": "${workspaceFolder}/BACKEND" // replace this BACKEND with your backend folder name
+            },
+            "problemMatcher": [],
+        },
+        {
+            "label": "Run Frontend Dev Server",
+            "type": "shell",
+            "command": "npm run dev",
+            "options": {
+                "cwd": "${workspaceFolder}/FRONTEND" // replace this FRONTEND with your frontend folder name
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Start Both Servers",
+            "dependsOn": [
+                "Start Backend Server",
+                "Run Frontend Dev Server"
+            ],
+            "type": "shell",
+            "problemMatcher": [],
+            "group": "build" // Optional: categorize this task
+        }
+    ]
+}
