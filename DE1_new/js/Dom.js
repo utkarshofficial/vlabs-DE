@@ -221,6 +221,11 @@ class Dom {
       ).toFixed(2),
     };
 
+    for(let key in  connectingElementProps) {
+      console.log(connectingElement.item)
+      console.log(`${key}: ${connectingElementProps[key]}`)
+    }
+
     switch (direction) {
       case "left":
         arrowRotate = 90;
