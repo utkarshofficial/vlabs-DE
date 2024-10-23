@@ -57,6 +57,8 @@ let Src = {
     tab_4: new Dom("#tab_4"),
     tab_dot: new Dom("#tab_dot"),
     transmitter: new Dom("#transmitter"),
+    zoom_battery_with_bcg_and_border: new Dom("#zoom_battery_with_bcg_and_border"),
+    zoom_without_battery_and_border: new Dom("#zoom_without_battery_and_border"),
 
     // * New Videos added here
     battery_remove: new Dom("#battery_remove"),

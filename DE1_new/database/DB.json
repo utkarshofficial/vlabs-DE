@@ -55,7 +55,9 @@
         "tab_3.png",
         "tab_4.png",
         "tab_dot.png",
-        "transmitter.png"
+        "transmitter.png",
+        "zoom_battery_with_bcg_and_border.png",
+        "zoom_without_battery_and_border.png"
     ],
     "videosPath": "./src/videos/step/",
     "videos": [
