@@ -29,6 +29,7 @@ let Src = {
     issue_bat: new Dom("#issue_bat"),
     issue_battery_listings: new Dom("#issue_battery_listings"),
     issue_pmu: new Dom("#issue_pmu"),
+    mask: new Dom("#mask"),
     pmu_img: new Dom("#pmu_img"),
     popup_1: new Dom("#popup_1"),
     popup_2: new Dom("#popup_2"),

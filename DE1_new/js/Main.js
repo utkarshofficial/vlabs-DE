@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   Scenes.currentStep = 2;
   Scenes.next();
 
-  Download.init()
+  // Download.init()
   // DeveloperTools.init()
 
   $( function() {
