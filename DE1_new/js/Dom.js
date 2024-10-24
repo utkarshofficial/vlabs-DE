@@ -18,8 +18,13 @@ class Dom {
   getValue() {
     return this.item.attributes["value"].value;
   }
-  onClick(callback){
-    this.item.onclick = callback
+  onClick(callback=null){
+    if(callback==null){
+      this.item.onclick = ()=>{}
+    }else{
+      this.item.onclick = callback
+    }
+    return this
   }
   onEvent(event='click',callback){
     this.item.addEventListener(event,callback)

@@ -1,4 +1,12 @@
-import { Dom, Util, Layout, Sliders, Src, Elements } from "./Libs.js";
+import {
+  Dom,
+  Util,
+  Layout,
+  Sliders,
+  Src,
+  Elements,
+  DeveloperTools,
+} from "./Libs.js";
 
 const Scenes = {
   // ! To Plot graph
@@ -366,6 +374,20 @@ const Scenes = {
     modalBox.set(mBoxLeft, mBoxTop, mBoxHeight, mBoxWidth).show("flex");
 
     return modalBox;
+  },
+  maskClick(left, top, height, width, onClick, devMode = false) {
+    if (devMode) {
+      DeveloperTools.init();
+    }
+    let maskImg = Src.mask;
+    maskImg
+      .set(left, top, height, width)
+      .styles({ cursor: "pointer", zIndex: 1000 })
+      .onClick(()=>{
+        onClick()
+        maskImg.onClick().styles({ cursor: "unset", zIndex: 1 })
+      });
+    return maskImg
   },
   // for typing hello text
   student_name: "",
@@ -858,7 +880,7 @@ const Scenes = {
       Src.problem_1_battery_puffed.set(676, 292, 130).hide();
       Src.zoom_battery_with_bcg_and_border.set(97, 58, 287).zIndex(2).hide();
       Src.zoom_without_battery_and_border.set(50, 58, 287).zIndex(2).hide();
-      Src.mask.styles({ cursor: "pointer", zIndex: 1000 });
+      Src.mask.styles({ cursor: "pointer", zIndex: 1000 })
       let videoBox = new Dom("");
       let textCCIdx = 0;
       let textCC = [
@@ -1126,17 +1148,15 @@ const Scenes = {
     // * step4
     () => {
       Scenes.StepProcess.start();
-      Scenes.experimentHeading("Battery issues");
+      Scenes.experimentHeading("PMU issues");
 
-      Src.problem_1_drone_front_image.set(-13, -1, 400).zIndex(1);
-
-      Src.mask.styles({ cursor: "pointer", zIndex: 1000 });
+      Scenes.maskClick()
       let videoBox = new Dom("");
       let textCCIdx = 0;
       let textCC = [
-        "To check the battery, you will have to first remove the battery from the drone.",
+        "First check whether the PMU is physically damage or not",
 
-        "The video explains how to remove battery.",
+        "Click on the PMU to see the zoom view",
 
         "Click on the drone to see the zoom view.",
 
@@ -1152,14 +1172,17 @@ const Scenes = {
       ];
 
       // * Animation functions
-      const anime = () => {
+      const animes = () => {
+        Src.problem_1_drone_front_image.set(5, -20, 444)
         Util.setCC(
-          "To check the battery, you will have to first remove the battery from the drone."
+          "Click on the PMU to see the zoom view"
         );
+        Scenes.stepModal({description: "First check whether the PMU is physically damage or not"},()=>{
+
+        }, 0,0)
         setTimeout(() => {
           frame2();
         }, 6000);
-        Src.problem_1_drone_front_image.set(5, -20, 444);
         function frame2() {
           videoBox = Scenes.videoBox(
             535,
