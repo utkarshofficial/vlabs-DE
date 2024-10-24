@@ -241,7 +241,11 @@ const Util = {
       },
     }); 
     let utterance = this.textToSpeech(text, speak);
-    return utterance;
+    return {
+      onend: (onCompleteCallback) => {
+        utterance.onend = onCompleteCallback
+      }
+    };
   },
 
   //! To add temp text
