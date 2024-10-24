@@ -3,10 +3,10 @@ import { Download, Scenes, Src, Dom, DomList, Util, DB, DeveloperTools } from ".
 
 document.addEventListener('DOMContentLoaded', ()=>{
   // stepcalling
-  Scenes.currentStep = 2;
+  Scenes.currentStep = 3;
   Scenes.next();
 
-  // Download.init()
+  Download.init()
   // DeveloperTools.init()
 
   $( function() {

@@ -294,25 +294,25 @@ const Scenes = {
     mBoxLeft = null,
     mBoxTop = null,
     mBoxWidth = null,
-    mBoxHeight = null,
+    mBoxHeight = null
   ) {
     let content = {
       title: boxContent.title ? boxContent.title : "",
       description: boxContent.description ? boxContent.description : "",
-    }
-    
+    };
+
     let modalBox = new Dom(".modal-box");
     let modalTitle = new Dom(".modal-box .header .title");
     let modalContent = new Dom(".modal-box .content");
     let modalClose = new Dom(".modal-box .footer .btn1");
 
-    let btn2  = new Dom(".modal-box .footer .btn2")
-    btn2.hide()
+    let btn2 = new Dom(".modal-box .footer .btn2");
+    btn2.hide();
 
-    if(content.title == ""){
-      modalTitle.hide()
-    }else{
-      modalTitle.show()
+    if (content.title == "") {
+      modalTitle.hide();
+    } else {
+      modalTitle.show();
       modalTitle.setContent(content.title);
     }
     modalContent.setContent(content.description);
@@ -327,41 +327,41 @@ const Scenes = {
   },
   stepModalChoice(
     boxContent,
-    btn1Text="", btn1onClick=()=>{},
-    btn2Text="", btn2onClick=()=>{},
+    btn1Text = "",
+    btn1onClick = () => {},
+    btn2Text = "",
+    btn2onClick = () => {},
     mBoxLeft = null,
     mBoxTop = null,
     mBoxWidth = null,
-    mBoxHeight = null,
+    mBoxHeight = null
   ) {
     let content = {
       title: boxContent.title ? boxContent.title : "",
       description: boxContent.description ? boxContent.description : "",
-    }
-    
+    };
+
     let modalBox = new Dom(".modal-box");
     let modalTitle = new Dom(".modal-box .header .title");
     let modalContent = new Dom(".modal-box .content");
-    
-    let btn1 = new Dom(".modal-box .footer .btn1").setContent(btn1Text)
-    btn1.onClick(()=>{
-      btn1onClick()
-    })
 
-    let btn2  = new Dom(".modal-box .footer .btn2").set().setContent(btn2Text);
-    btn2.onClick(()=>{
-      btn2onClick()
-    })
-    
-    if(content.title == ""){
-      modalTitle.hide()
-    }else{
-      modalTitle.show()
+    let btn1 = new Dom(".modal-box .footer .btn1").setContent(btn1Text);
+    btn1.onClick(() => {
+      btn1onClick();
+    });
+
+    let btn2 = new Dom(".modal-box .footer .btn2").set().setContent(btn2Text);
+    btn2.onClick(() => {
+      btn2onClick();
+    });
+
+    if (content.title == "") {
+      modalTitle.hide();
+    } else {
+      modalTitle.show();
       modalTitle.setContent(content.title);
     }
     modalContent.setContent(content.description);
-    
-
 
     modalBox.set(mBoxLeft, mBoxTop, mBoxHeight, mBoxWidth).show("flex");
 
@@ -399,10 +399,9 @@ const Scenes = {
       let styles = {
         rightTick: {
           filter: "hue-rotate(282deg)",
-          zIndex:  1,
-
-        }
-      }
+          zIndex: 1,
+        },
+      };
 
       // * Required images
       Src.drone_3d_img.set(11 + 60, 11, 260).zIndex(1);
@@ -422,28 +421,27 @@ const Scenes = {
       let texts = [
         {
           title: "",
-          description: "If drone is not responding then following issues can be happen -"
+          description:
+            "If drone is not responding then following issues can be happen -",
         },
         {
           title: "Battery Issues",
-          description: "Either the battery wire connection may not be properly connected or the battery is not working properly."
+          description:
+            "Either the battery wire connection may not be properly connected or the battery is not working properly.",
         },
-
-        
-      ]
+      ];
       let right_ricks = [
-        Src.right_tick_1.set(42,-11,20).styles(styles.rightTick),
-        Src.right_tick_2.set(42+ 230 * 1,-11,20).styles(styles.rightTick),
-        Src.right_tick_3.set(42+ 230 * 2,-11,20).styles(styles.rightTick),
-        Src.right_tick_4.set(42+ 230 * 3,-11,20).styles(styles.rightTick),
-      ]
+        Src.right_tick_1.set(42, -11, 20).styles(styles.rightTick),
+        Src.right_tick_2.set(42 + 230 * 1, -11, 20).styles(styles.rightTick),
+        Src.right_tick_3.set(42 + 230 * 2, -11, 20).styles(styles.rightTick),
+        Src.right_tick_4.set(42 + 230 * 3, -11, 20).styles(styles.rightTick),
+      ];
       // Src.front_page_box.set(285 + 40, 63, 286, 618);
       // Src.problem_1.set(330 + 38, 125, 61).zIndex(1);
       // Src.problem_2.set(330 + 32, 226, 61).zIndex(1);
 
       // Dom.setBlinkArrowRed(0,0)
-      
-      
+
       let droneAnime = anime({
         targets: Src.drone_3d_img.item,
         keyframes: [{ translateY: 105 }, { translateY: 11 }],
@@ -489,8 +487,8 @@ const Scenes = {
 
         // modal box
         function modalBoxOnComplete() {
-          Scenes.stepModal(texts[0], nextAnime, 350 + 60, 136,367);
-          Util.setCC("Click on the close button")
+          Scenes.stepModal(texts[0], nextAnime, 350 + 60, 136, 367);
+          Util.setCC("Click on the close button");
         }
 
         // next anime on close
@@ -512,18 +510,18 @@ const Scenes = {
             duration: 2000,
             easing: "linear",
             complete() {
-              tabs.forEach(tab=>{
+              tabs.forEach((tab) => {
                 anime({
-                  begin(){
-                    tab.show().opacity(0)
-                    Dom.setBlinkArrowOnElement(Src.tab_1, "bottom")
+                  begin() {
+                    tab.show().opacity(0);
+                    Dom.setBlinkArrowOnElement(Src.tab_1, "bottom");
                   },
                   targets: tab.item,
-                  opacity: [0,1],
+                  opacity: [0, 1],
                   easing: "linear",
                   duration: 1000,
-                })
-              })
+                });
+              });
               modalBoxOnComplete();
             },
           });
@@ -531,7 +529,7 @@ const Scenes = {
 
         // modal box
         function modalBoxOnComplete() {
-          Scenes.stepModal(texts[1], nextAnime, 94,175,350);
+          Scenes.stepModal(texts[1], nextAnime, 94, 175, 350);
         }
 
         // next anime on close
@@ -735,8 +733,8 @@ const Scenes = {
         }
       }
 
-      const start = anime2_drone_shifting_and_show_menu
-      // start() 
+      const start = anime2_drone_shifting_and_show_menu;
+      // start()
 
       return true;
     },
@@ -841,7 +839,7 @@ const Scenes = {
       return true;
     },
     //! problem 1 issue 1
-    //* step2
+    // * step2
     () => {
       Scenes.StepProcess.start();
       Scenes.experimentHeading("Battery issues");
@@ -858,16 +856,16 @@ const Scenes = {
         .hide();
       Src.step_1_arrow_image_1.set(243, 69, 116).zIndex(1).rotate(180).hide();
       Src.problem_1_battery_puffed.set(676, 292, 130).hide();
-      Src.zoom_battery_with_bcg_and_border.set(97, 58, 287).zIndex(2).hide()
-      Src.zoom_without_battery_and_border.set(50, 58, 287).zIndex(2).hide()
-      Src.mask.styles({cursor: "pointer", zIndex: 1000})
-      let videoBox = new Dom("")
-      let textCCIdx = 0
+      Src.zoom_battery_with_bcg_and_border.set(97, 58, 287).zIndex(2).hide();
+      Src.zoom_without_battery_and_border.set(50, 58, 287).zIndex(2).hide();
+      Src.mask.styles({ cursor: "pointer", zIndex: 1000 });
+      let videoBox = new Dom("");
+      let textCCIdx = 0;
       let textCC = [
         "To check the battery, you will have to first remove the battery from the drone.",
-        
+
         "The video explains how to remove battery.",
-              
+
         "Click on the drone to see the zoom view.",
 
         "Click on the battery to remove it.",
@@ -879,55 +877,60 @@ const Scenes = {
         "Is your battery puffed or damage from anywhere ?",
 
         "If it is swollen or have any damage then REPLACE it.",
-      ]
+      ];
 
       // * Animation functions
       const animes = [
-        ()=>{
-          Util.setCC("To check the battery, you will have to first remove the battery from the drone.")
+        () => {
+          Util.setCC(
+            "To check the battery, you will have to first remove the battery from the drone."
+          );
           setTimeout(() => {
-            frame2()
+            frame2();
           }, 6000);
-          Src.problem_1_drone_front_image.set(5,-20,444)
-          function frame2(){
+          Src.problem_1_drone_front_image.set(5, -20, 444);
+          function frame2() {
             videoBox = Scenes.videoBox(
               535,
               116,
               Src.battery_remove,
               200,
               "How to remove battery"
-            )
-            Scenes.stepModal({description: "The video explains how to remove battery."},()=>{
-              videoBox.hide()
-              frame3()
-            }, 550,28)
+            );
+            Scenes.stepModal(
+              { description: "The video explains how to remove battery." },
+              () => {
+                videoBox.hide();
+                frame3();
+              },
+              550,
+              28
+            );
 
             // Util.setCC(textCC[textCCIdx++]).onend(frame3)
           }
 
-          function frame3(){
-            Util.setCC("Click on the drone to see the zoom view.")
-            Dom.setBlinkArrowRed(237, 273).play()
-            videoBox.hide()
+          function frame3() {
+            Util.setCC("Click on the drone to see the zoom view.");
+            Dom.setBlinkArrowRed(237, 273).play();
+            videoBox.hide();
 
-            Src.mask.set(168,140,120,184).onClick(()=>{
-              Src.zoom_battery_with_bcg_and_border.show()
-              Dom.setBlinkArrowRed().reset()
-              frame4()
-            })
-
+            Src.mask.set(168, 140, 120, 184).onClick(() => {
+              Src.zoom_battery_with_bcg_and_border.show();
+              Dom.setBlinkArrowRed().reset();
+              frame4();
+            });
           }
-          
 
           function frame4() {
-            Util.setCC("Click on the battery to remove it.") 
-            Dom.setBlinkArrowRed(243, 230).play()
-            
-            Src.mask.set(201,184,35,107).onClick(()=>{
-              Src.zoom_battery_with_bcg_and_border.hide()
-              Src.zoom_without_battery_and_border.set(97, 58, 287).zIndex(1)
-              Src.problem_1_battery.set(126,128,120).zIndex(2)
-              Dom.setBlinkArrowRed().reset()
+            Util.setCC("Click on the battery to remove it.");
+            Dom.setBlinkArrowRed(243, 230).play();
+
+            Src.mask.set(201, 184, 35, 107).onClick(() => {
+              Src.zoom_battery_with_bcg_and_border.hide();
+              Src.zoom_without_battery_and_border.set(97, 58, 287).zIndex(1);
+              Src.problem_1_battery.set(126, 128, 120).zIndex(2);
+              Dom.setBlinkArrowRed().reset();
 
               anime({
                 targets: Src.problem_1_battery.item,
@@ -935,38 +938,318 @@ const Scenes = {
                 top: 26,
                 easing: "linear",
                 duration: 2000,
-                complete(){
-                  Util.setCC("Physically check whether battery is not puffed or swollen anywhere.")
-                  Scenes.stepModal({description: "Example of puffed or swollen battery."},()=>{
-                    frame5()
-                  },602,228,346).zIndex(500)
-                  Src.problem_1_battery_puffed.set(630,300,130).zIndex(500)
-                }
-              })
-            })
+                complete() {
+                  Util.setCC(
+                    "Physically check whether battery is not puffed or swollen anywhere."
+                  );
+                  Scenes.stepModal(
+                    { description: "Example of puffed or swollen battery." },
+                    () => {
+                      frame5();
+                    },
+                    602,
+                    228,
+                    346
+                  ).zIndex(500);
+                  Src.problem_1_battery_puffed.set(630, 300, 130).zIndex(500);
+                },
+              });
+            });
           }
 
-          function frame5(){
-            Scenes.stepModalChoice({
-              description: "Is your battery puffed or damage from anywhere ?",
-            }, 
-            "Yes",()=>{
-
-            },
-            "No",()=>{  
-
-            }, 612, 203, 323)
+          function frame5() {
+            Scenes.stepModalChoice(
+              {
+                description: "Is your battery puffed or damage from anywhere ?",
+              },
+              "Yes",
+              () => {},
+              "No",
+              () => {},
+              612,
+              203,
+              323
+            );
           }
           // Src.zoom_battery_with_bcg_and_border.show()
         },
-      ]
+      ];
 
-      let idx = 0
-      animes[idx]()
+      let idx = 0;
+      animes[idx]();
 
       return true;
     },
     //! problem 1 issue 2
+    // * step3
+    () => {
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("Battery issues");
+
+      Src.problem_1_drone_front_image.set(-13, -1, 400).zIndex(1);
+      Src.flight_controller_zoom_img.set(388, 93, null, 264).zIndex(1).hide();
+      Src.problem_1_drone_front_zoom_image_2
+        .set(388, 93, null, 264)
+        .zIndex(1)
+        .hide();
+      Src.problem_1_soldering_iron_of_connector
+        .set(388, 93, 311, 264)
+        .zIndex(1)
+        .hide();
+      Src.step_1_arrow_image_1.set(243, 69, 116).zIndex(1).rotate(180).hide();
+      Src.problem_1_battery_puffed.set(676, 292, 130).hide();
+      Src.zoom_battery_with_bcg_and_border.set(97, 58, 287).zIndex(2).hide();
+      Src.zoom_without_battery_and_border.set(50, 58, 287).zIndex(2).hide();
+      Src.mask.styles({ cursor: "pointer", zIndex: 1000 });
+      let videoBox = new Dom("");
+      let textCCIdx = 0;
+      let textCC = [
+        "To check the battery, you will have to first remove the battery from the drone.",
+
+        "The video explains how to remove battery.",
+
+        "Click on the drone to see the zoom view.",
+
+        "Click on the battery to remove it.",
+
+        "Physically check whether battery is not puffed or swollen anywhere.",
+
+        "Example of puffed or swollen battery.",
+
+        "Is your battery puffed or damage from anywhere ?",
+
+        "If it is swollen or have any damage then REPLACE it.",
+      ];
+
+      // * Animation functions
+      const animes = [
+        () => {
+          Util.setCC(
+            "To check the battery, you will have to first remove the battery from the drone."
+          );
+          setTimeout(() => {
+            frame2();
+          }, 6000);
+          Src.problem_1_drone_front_image.set(5, -20, 444);
+          function frame2() {
+            videoBox = Scenes.videoBox(
+              535,
+              116,
+              Src.battery_remove,
+              200,
+              "How to remove battery"
+            );
+            Scenes.stepModal(
+              { description: "The video explains how to remove battery." },
+              () => {
+                videoBox.hide();
+                frame3();
+              },
+              550,
+              28
+            );
+
+            // Util.setCC(textCC[textCCIdx++]).onend(frame3)
+          }
+
+          function frame3() {
+            Util.setCC("Click on the drone to see the zoom view.");
+            Dom.setBlinkArrowRed(237, 273).play();
+            videoBox.hide();
+
+            Src.mask.set(168, 140, 120, 184).onClick(() => {
+              Src.zoom_battery_with_bcg_and_border.show();
+              Dom.setBlinkArrowRed().reset();
+              frame4();
+            });
+          }
+
+          function frame4() {
+            Util.setCC("Click on the battery to remove it.");
+            Dom.setBlinkArrowRed(243, 230).play();
+
+            Src.mask.set(201, 184, 35, 107).onClick(() => {
+              Src.zoom_battery_with_bcg_and_border.hide();
+              Src.zoom_without_battery_and_border.set(97, 58, 287).zIndex(1);
+              Src.problem_1_battery.set(126, 128, 120).zIndex(2);
+              Dom.setBlinkArrowRed().reset();
+
+              anime({
+                targets: Src.problem_1_battery.item,
+                left: 645,
+                top: 26,
+                easing: "linear",
+                duration: 2000,
+                complete() {
+                  Util.setCC(
+                    "Physically check whether battery is not puffed or swollen anywhere."
+                  );
+                  Scenes.stepModal(
+                    { description: "Example of puffed or swollen battery." },
+                    () => {
+                      frame5();
+                    },
+                    602,
+                    228,
+                    346
+                  ).zIndex(500);
+                  Src.problem_1_battery_puffed.set(630, 300, 130).zIndex(500);
+                },
+              });
+            });
+          }
+
+          function frame5() {
+            Scenes.stepModalChoice(
+              {
+                description: "Is your battery puffed or damage from anywhere ?",
+              },
+              "Yes",
+              () => {},
+              "No",
+              () => {},
+              612,
+              203,
+              323
+            );
+          }
+          // Src.zoom_battery_with_bcg_and_border.show()
+        },
+      ];
+
+      let idx = 0;
+      animes[idx]();
+
+      return true;
+    },
+    //! problem 2 issue 1
+    // * step4
+    () => {
+      Scenes.StepProcess.start();
+      Scenes.experimentHeading("Battery issues");
+
+      Src.problem_1_drone_front_image.set(-13, -1, 400).zIndex(1);
+
+      Src.mask.styles({ cursor: "pointer", zIndex: 1000 });
+      let videoBox = new Dom("");
+      let textCCIdx = 0;
+      let textCC = [
+        "To check the battery, you will have to first remove the battery from the drone.",
+
+        "The video explains how to remove battery.",
+
+        "Click on the drone to see the zoom view.",
+
+        "Click on the battery to remove it.",
+
+        "Physically check whether battery is not puffed or swollen anywhere.",
+
+        "Example of puffed or swollen battery.",
+
+        "Is your battery puffed or damage from anywhere ?",
+
+        "If it is swollen or have any damage then REPLACE it.",
+      ];
+
+      // * Animation functions
+      const anime = () => {
+        Util.setCC(
+          "To check the battery, you will have to first remove the battery from the drone."
+        );
+        setTimeout(() => {
+          frame2();
+        }, 6000);
+        Src.problem_1_drone_front_image.set(5, -20, 444);
+        function frame2() {
+          videoBox = Scenes.videoBox(
+            535,
+            116,
+            Src.battery_remove,
+            200,
+            "How to remove battery"
+          );
+          Scenes.stepModal(
+            { description: "The video explains how to remove battery." },
+            () => {
+              videoBox.hide();
+              frame3();
+            },
+            550,
+            28
+          );
+
+          // Util.setCC(textCC[textCCIdx++]).onend(frame3)
+        }
+
+        function frame3() {
+          Util.setCC("Click on the drone to see the zoom view.");
+          Dom.setBlinkArrowRed(237, 273).play();
+          videoBox.hide();
+
+          Src.mask.set(168, 140, 120, 184).onClick(() => {
+            Src.zoom_battery_with_bcg_and_border.show();
+            Dom.setBlinkArrowRed().reset();
+            frame4();
+          });
+        }
+
+        function frame4() {
+          Util.setCC("Click on the battery to remove it.");
+          Dom.setBlinkArrowRed(243, 230).play();
+
+          Src.mask.set(201, 184, 35, 107).onClick(() => {
+            Src.zoom_battery_with_bcg_and_border.hide();
+            Src.zoom_without_battery_and_border.set(97, 58, 287).zIndex(1);
+            Src.problem_1_battery.set(126, 128, 120).zIndex(2);
+            Dom.setBlinkArrowRed().reset();
+
+            anime({
+              targets: Src.problem_1_battery.item,
+              left: 645,
+              top: 26,
+              easing: "linear",
+              duration: 2000,
+              complete() {
+                Util.setCC(
+                  "Physically check whether battery is not puffed or swollen anywhere."
+                );
+                Scenes.stepModal(
+                  { description: "Example of puffed or swollen battery." },
+                  () => {
+                    frame5();
+                  },
+                  602,
+                  228,
+                  346
+                ).zIndex(500);
+                Src.problem_1_battery_puffed.set(630, 300, 130).zIndex(500);
+              },
+            });
+          });
+        }
+
+        function frame5() {
+          Scenes.stepModalChoice(
+            {
+              description: "Is your battery puffed or damage from anywhere ?",
+            },
+            "Yes",
+            () => {},
+            "No",
+            () => {},
+            612,
+            203,
+            323
+          );
+        }
+        // Src.zoom_battery_with_bcg_and_border.show()
+      };
+
+      // start anime
+      animes();
+
+      return true;
+    },
     // * Step3
     () => {
       Scenes.StepProcess.start();
